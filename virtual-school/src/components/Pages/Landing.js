@@ -35,6 +35,8 @@ function Landing() {
         </div>
       </div>
 
+
+
       <aside
         id="default-sidebar"
         className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
@@ -58,16 +60,18 @@ function Landing() {
             </h1>
           </NavLink>
           <ul className="space-y-2 font-medium">
-           
+
+
+
 
             <li>
               <NavLink
                 to="/login"
                 className="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-black dark:hover:bg-gray-700"
               >
-                 <div className="text-xl">
-                    <MdOutlineLogin />
-                  </div>
+                <div className="text-xl">
+                  <MdOutlineLogin />
+                </div>
                 <span className="flex-1 ml-3 text-2xl text-start">Login</span>
               </NavLink>
             </li>
@@ -77,18 +81,22 @@ function Landing() {
                 className="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-black dark:hover:bg-gray-700"
                 to="/signUp"
               >
-               <div className="text-xl">
-                    <GoSignIn />
-                  </div>
+                <div className="text-xl">
+                  <GoSignIn />
+                </div>
                 <span className="flex-1 ml-3 text-2xl text-start">Sign Up</span>
               </NavLink>
             </li>
-            <div style={{paddingTop: "370px" }}>
+            <div style={{ paddingTop: "370px" }}>
               <hr className="border-4 items-center pr-10"></hr>
             </div>
           </ul>
         </div>
       </aside>
+
+
+
+
     </div>
   );
 }
