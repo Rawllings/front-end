@@ -2,7 +2,7 @@ import React from "react";
 
 import { NavLink } from "react-router-dom";
 import "../Pages/Dashboard.css";
-
+import Logout from "./Logout";
 function Dashboard({ dashboardItems, children }) {
 
 
@@ -64,12 +64,8 @@ function Dashboard({ dashboardItems, children }) {
                   <hr className="border-4 items-center pr-10"></hr>
                 </div> */}
               </ul>
-              <div style={{ paddingTop: "290px" }}>
-                <hr className="border-4 items-center pr-10" />
-                {/* <NavLink className="flex items-center p-2   dark:text-white  dark:hover:bg-gray-700"> */}
-                <span className="flex-1 ml-3 text-2xl px-10 text-start font-medium">Sign Out</span>
-                {/* </NavLink> */}
-              </div>
+
+              <Logout />
             </div>
           </aside>
         </div>
