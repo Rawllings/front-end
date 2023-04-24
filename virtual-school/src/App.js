@@ -16,17 +16,20 @@ import EducatorEntry from "./components/Pages/EducatorEntry";
 import StudentEntry from "./components/Pages/StudentEntry";
 import Educator from "./components/Pages/Educator";
 import Examschedule from "./components/Pages/Examschedule";
+import AllCourse from "./components/Pages/AllCourse";
 
 
 function App() {
   return (
-   
+
     <BrowserRouter>
       <AuthProvider>
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/admin/student" element={<StudentEntry />} />
           <Route path="/admin/course" element={<CourseEntry />} />
+          <Route path="/admin/allcourse" element={<AllCourse />} />
+
           <Route path="/admin/educator" element={<EducatorEntry />} />
           <Route path="/student" element={<StudentDashboard />} />
           <Route path="/admin/school" element={<SchoolEntry />} />
@@ -36,9 +39,9 @@ function App() {
           <Route path="student/chat" element={<Chat />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/educator" element={<Educator/>} />
-          <Route path="/educator/examschedule" element={<Examschedule/>} />
-          
+          <Route path="/educator" element={<Educator />} />
+          <Route path="/educator/examschedule" element={<Examschedule />} />
+
         </Routes>
       </AuthProvider>
     </BrowserRouter>

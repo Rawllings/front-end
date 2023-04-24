@@ -60,12 +60,12 @@ function Dashboard({ dashboardItems, children }) {
                   </NavLink>
                   // </li>
                 ))}
-                {/* <div style={{ paddingTop: "370px" }}>
-                  <hr className="border-4 items-center pr-10"></hr>
-                </div> */}
+                <div style={{ paddingTop: "30px" }}>
+                  <hr className="border-1 items-center my-10"></hr>
+                </div>
               </ul>
 
-              <Logout />
+              <Logout className="px-20" />
             </div>
           </aside>
         </div>

@@ -29,7 +29,7 @@ function SchoolEntry() {
             icon: <BsBook />,
         },
         {
-            path: "/admin/class",
+            path: "/admin/allcourse",
             name: "View Courses",
             icon: <BsTable />,
         },

@@ -6,8 +6,14 @@ import { NavLink } from "react-router-dom";
 import { FaSchool, FaChalkboardTeacher } from "react-icons/fa";
 import { MdOutlineSchool, MdOutlineLogin } from "react-icons/md";
 import { BsBook, BsTable } from "react-icons/bs";
-
+import { sample } from 'lodash';
+import { useState } from "react";
 function CourseEntry() {
+    const [selectedOption, setSelectedOption] = useState('');
+    const [courseName, setCourseName] = useState('');
+    const [courseCategory, setCourseCategory] = useState('');
+
+    const options = [aboutImg, aboutImg, aboutImg, aboutImg];
     const dashboardItems = [
         {
             path: "/admin/school",
@@ -30,11 +36,30 @@ function CourseEntry() {
             icon: <BsBook />,
         },
         {
-            path: "/admin/class",
+            path: "/admin/allcourse",
             name: "View Courses",
             icon: <BsTable />,
         },
     ];
+
+    const handleButtonClick = () => {
+        fetch("/course/new", {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                courseName: courseName,
+                courseCategory: courseCategory,
+                courseImage: randomOption
+            })
+        })
+        const randomOption = sample(options);
+        setSelectedOption(randomOption);
+    };
+
+
     return (
         <>
             <div>
@@ -62,7 +87,7 @@ function CourseEntry() {
                             </div>
 
                             <div className="flex justify-center items-center h-screen">
-                                <form className="bg-white shadow-md rounded px-8 pt-0 pb-8 mb-60 w-1/2">
+                                <form className="bg-white shadow-md rounded px-8 pt-0 pb-8 mb-60 w-1/2" onSubmit={handleButtonClick}>
                                     <div className="mb-4">
                                         <label className="block text-gray-700 font-bold mb-2" htmlFor="name">
                                             Course Name
@@ -72,6 +97,8 @@ function CourseEntry() {
                                             id="name"
                                             type="text"
                                             name="name"
+                                            value={courseName}
+                                            onChange={(e) => setCourseName(e.target.value)}
                                             placeholder="Enter your name"
                                         />
                                     </div>
@@ -84,7 +111,23 @@ function CourseEntry() {
                                             id="email"
                                             type="email"
                                             name="email"
+                                            value={courseCategory}
+                                            onChange={(e) => setCourseCategory(e.target.value)}
                                             placeholder="Enter your email"
+                                        />
+                                    </div>
+                                    <div className="mb-4" hidden="true">
+                                        <label className="block text-gray-700 font-bold mb-2" htmlFor="email">
+                                            Course Image
+                                        </label>
+                                        <input
+                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                            id="email"
+                                            type="email"
+                                            name="email"
+                                            value={selectedOption}
+                                            placeholder="Enter your email"
+                                            onChange={(e) => { setSelectedOption(e.target.value) }}
                                         />
                                     </div>
                                     {/* <div className="mb-6">
