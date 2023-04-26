@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import CardCourse from "./CardCourse";
-import EducatorLoginSideBar from "./EducatorLoginSideBar";
+// import EducatorLoginSideBar from "./EducatorLoginSideBar";
+import EducatorSideBar from "./EducatorSideBar";
 
 function Attendance() {
   const token = localStorage.getItem("jwt");
   const [educatorId, setEducatorId] = useState();
   const [courses, setCourses] = useState([]);
+
+  console.log(courses)
 
   useEffect(() => {
     fetch("/loggedin", {
@@ -48,7 +51,7 @@ function Attendance() {
           ))}
         </div>
       </div>
-      <EducatorLoginSideBar />
+      <EducatorSideBar />
     </>
   );
 }
