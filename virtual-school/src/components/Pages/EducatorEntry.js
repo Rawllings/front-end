@@ -24,16 +24,16 @@ function EducatorEntry() {
     setSchoolId(event.target.value);
   };
 
-//   const token = localStorage.getItem("jwt");
+  //   const token = localStorage.getItem("jwt");
 
   function handleSubmit(e) {
     e.preventDefault();
 
     const educator = {
-        educatorName: educatorName,
-       schoolId:schoolId,
-      
-      };
+      educatorName: educatorName,
+      schoolId: schoolId,
+
+    };
 
     fetch("/educator", {
       method: "POST",
@@ -43,8 +43,8 @@ function EducatorEntry() {
       },
       body: JSON.stringify(educator),
     })
-    .then((res) => res.json())
-    .then((response) => {
+      .then((res) => res.json())
+      .then((response) => {
         console.log(response);
         Swal.fire({
           title: 'Success!',
@@ -52,7 +52,7 @@ function EducatorEntry() {
           icon: 'success',
           confirmButtonText: 'OK'
         });
-    })
+      })
 
   }
 
@@ -78,7 +78,7 @@ function EducatorEntry() {
       icon: <BsBook />,
     },
     {
-      path: "/admin/class",
+      path: "/admin/allcourse",
       name: "View Courses",
       icon: <BsTable />,
     },
@@ -107,7 +107,7 @@ function EducatorEntry() {
               <div className="flex justify-center items-center h-screen">
                 <form className="bg-white shadow-md rounded px-8 pt-0 pb-8 mb-60 w-1/2" onSubmit={handleSubmit} >
 
-                <div className="mb-4">
+                  <div className="mb-4">
                     <label
                       className="block text-gray-700 font-bold mb-2"
                       htmlFor="email"
@@ -116,7 +116,7 @@ function EducatorEntry() {
                       Educator name
                     </label>
                     <input
-                    onChange={handleNameChange}
+                      onChange={handleNameChange}
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       id="name"
                       type="text"
@@ -132,7 +132,7 @@ function EducatorEntry() {
                       Educator Name
                     </label>
                     <input
-                    onClick={handleNameChange}
+                      onClick={handleNameChange}
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       id="name"
                       type="text"
@@ -164,7 +164,7 @@ function EducatorEntry() {
                       school
                     </label>
                     <input
-                    onChange={handleSchoolChange}
+                      onChange={handleSchoolChange}
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       id="school"
                       type="text"

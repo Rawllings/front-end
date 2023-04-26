@@ -66,7 +66,7 @@ function StudentEntry(  {schoolId}) {
       icon: <MdOutlineSchool />,
     },
     {
-      path: "/admin/course",
+      path: "/admin/allcourse",
       name: "Add Course",
       icon: <BsBook />,
     },

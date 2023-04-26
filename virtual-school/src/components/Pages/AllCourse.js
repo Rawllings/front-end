@@ -46,7 +46,7 @@ function AllCourse() {
     ];
 
     const handleButtonClick = () => {
-        fetch("/course/new", {
+        fetch("/courses", {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -81,17 +81,18 @@ function AllCourse() {
                         Administrator
                     </div>
 
-                    <Wrapper className='page relative section section-center px-30 py-25'>
+                    {/* <Wrapper className='page relative section section-center px-30 py-25'>
 
-                    </Wrapper>
+                    </Wrapper> */}
                     {/* <div className="flex h-screen items-center justify-center py-25 px-72 my-20">
                         <ProductList />
                     </div> */}
 
+                    <div  >
+                        <ProductList />
+                    </div>
                 </div>
-                <div className="flex h-screen items-center justify-center  mx-36 ">
-                    <ProductList />
-                </div>
+
             </div>
         </>)
 
