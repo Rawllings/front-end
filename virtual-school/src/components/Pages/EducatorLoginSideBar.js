@@ -82,6 +82,18 @@ function EducatorLoginSideBar() {
             <li>
               <NavLink
                 className="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-black dark:hover:bg-gray-700"
+                to="/plagiarism"
+              >
+                <div className="text-xl">
+                  <BsGraphUp />
+                </div>
+                <span className="flex-1 ml-3 text-2xl text-start">Check Plagiarism </span>
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                className="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-black dark:hover:bg-gray-700"
                 style={{ marginTop: "250px" }}
                 to="/login"
               >

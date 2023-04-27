@@ -49,65 +49,80 @@ function PlagiarismChecker() {
   }
 
   return (
-    <div>
-      <h1 className="text-center text-5xl font-bold pt-5">
-        {" "}
-        Plagiarism Checker
-      </h1>
-
-      <div className=" " style={{ marginLeft: "520px", paddingTop: "30px" }}>
-        <div
-         
-          class="block max-w-sm p-6 bg-gray-400 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
-        >
-          {/* <h1> Plagiarism Checker</h1> */}
-          <div>
-            <textarea
-              placeholder="Enter text 1"
-              value={text1}
-              onChange={handleText1Change}
-            />
-          </div>
-          <div>
-            <textarea
-              placeholder="Enter text 2"
-              value={text2}
-              onChange={handleText2Change}
-            />
-          </div>
-          {/* <div>
- <label htmlFor="plagiarismThreshold">Plagiarism threshold: {plagiarismThreshold}%</label>
- <input type="range" id="plagiarismThreshold" min="0" max="100" value={plagiarismThreshold} onChange={handlePlagiarismThresholdChange} />
-</div> */}
-          <div>
-            <button
-              type="submit"
-              className="bg-orange-400 p-1 rounded-md"
-              onClick={handleCheckPlagiarism}
-            >
-              Check Plagiarism
-            </button>
-          </div>
-          {plagiarismPercentage > 0 && (
-            <div>
-              Plagiarism percentage: {plagiarismPercentage}%{" "}
-              {plagiarismPercentage >= plagiarismThreshold
-                ? "(plagiarized)"
-                : "(not plagiarized)"}
-            </div>
-          )}
-          {identicalWords.length > 0 && (
-            <div>Identical words: {displayIdenticalWords(identicalWords)}</div>
-          )}
-          {identicalWords.length > 0 && (
-            <div>Text 1: {highlightIdenticalWords(text1)}</div>
-          )}
-          {identicalWords.length > 0 && (
-            <div>Text 2: {highlightIdenticalWords(text2)}</div>
-          )}
+<div className="bg-white rounded-lg shadow-lg p-6">
+  <h1 className="text-center text-5xl font-bold text-orange-500 mb-8">Plagiarism Checker</h1>
+  <div className="flex flex-col md:flex-row justify-center items-center md:space-x-12">
+    <div className="w-full md:w-1/2 mb-6 md:mb-0">
+      <label htmlFor="text1" className="text-orange-500 text-lg font-semibold mb-2 block">
+        Enter Text 1
+      </label>
+      <textarea
+        id="text1"
+        className="bg-gray-100 rounded-lg p-4 w-full border-2 border-gray-200 focus:outline-none focus:border-orange-500"
+        placeholder="Enter text 1"
+        value={text1}
+        onChange={handleText1Change}
+      />
+    </div>
+    <div className="w-full md:w-1/2">
+      <label htmlFor="text2" className="text-orange-500 text-lg font-semibold mb-2 block">
+        Enter Text 2
+      </label>
+      <textarea
+        id="text2"
+        className="bg-gray-100 rounded-lg p-4 w-full border-2 border-gray-200 focus:outline-none focus:border-orange-500"
+        placeholder="Enter text 2"
+        value={text2}
+        onChange={handleText2Change}
+      />
+    </div>
+  </div>
+  <div className="mt-8 flex justify-center">
+    <button
+      type="submit"
+      className="bg-orange-500 hover:bg-red-500 text-white font-bold py-2 px-4 rounded-full"
+      onClick={handleCheckPlagiarism}
+    >
+      Check Plagiarism
+    </button>
+  </div>
+  {plagiarismPercentage > 0 && (
+    <div className="mt-8 text-center">
+      <p className="text-3xl font-bold text-orange-500">Plagiarism Percentage: {plagiarismPercentage}%</p>
+      <p className="text-xl font-semibold text-gray-500 mt-4">
+        {plagiarismPercentage >= plagiarismThreshold ? "This text is plagiarized" : "This text is not plagiarized"}
+      </p>
+    </div>
+  )}
+  {identicalWords.length > 0 && (
+    <div className="mt-8">
+      <p className="text-3xl font-bold text-orange-500">Identical Words:</p>
+      <div className="bg-gray-100 rounded-lg p-4 border-2 border-gray-200 mt-4">
+        {displayIdenticalWords(identicalWords)}
+      </div>
+      <div className="mt-4">
+        <p className="text-lg font-semibold text-gray-500">Text 1:</p>
+        <div className="bg-gray-100 rounded-lg p-4 border-2 border-gray-200 mt-2">
+          {highlightIdenticalWords(text1)}
+        </div>
+      </div>
+      <div className="mt-4">
+        <p className="text-lg font-semibold text-gray-500">Text 2:</p>
+        <div className="bg-gray-100 rounded-lg p-4 border-2 border-gray-200 mt-2">
+          {highlightIdenticalWords(text2)}
         </div>
       </div>
     </div>
+  )}
+</div>
+
+
+
+
+
+
+
+
   );
 }
 
