@@ -28,6 +28,7 @@ import AttendanceList from "./components/Pages/AttendanceList";
 // import Test from "./components/Pages/Test";
 // import Swipper from "./components/Pages/Swipper";
 import AllCourse from "./components/Pages/AllCourse";
+import AddSchool from "./components/Pages/AddSchool";
 
 
 function App() {
@@ -157,6 +158,23 @@ function App() {
       .then((data) => console.log(data));
   }, [token]);
 
+  // OWNER 
+
+  const [owner, setOwner] = useState([]);
+  const [selectedOwnerId, setSelectedOwnerId] = useState(null);
+
+  useEffect(() => {
+    fetch("/school_owners", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        // Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => setOwner(data));
+  }, []);
+
 
 
 
@@ -173,7 +191,7 @@ function App() {
           <Route path="/admin/educator" element={<EducatorEntry schoolId={selectedSchoolId} />} />
           <Route path="/admin/allcourse" element={<AllCourse schoolId={selectedSchoolId} />} />
 
-          <Route path="/admin/school" element={<SchoolEntry />} />
+          <Route path="/admin/school" element={<SchoolEntry ownerId={selectedOwnerId}/>} />
 
           <Route path="/student" element={<StudentDashboard />} />
           <Route
@@ -181,7 +199,7 @@ function App() {
             element={<Resource resource={resource} />}
           />
           <Route path="student/exams" element={<Exam />} />
-          <Route path="student/exam-page" element={<ExamPage />} />
+          <Route path="student/:courseId/exam-page" element={<ExamPage />} />
           <Route path="student/results" element={<Result />} />
           <Route path="student/chat" element={<Chat coursesId={courseId}/>} />
 
@@ -205,7 +223,8 @@ function App() {
           <Route path="/educator" element={<Educator />} />
 
           <Route path="/plagiarism" element={<PlagiarismChecker />} />
-
+          
+          <Route path="/signup/add-school" element={< AddSchool ownerId={selectedOwnerId} schoolId={selectedSchoolId}/>} />
 
 
         </Routes>

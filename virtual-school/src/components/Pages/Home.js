@@ -17,7 +17,14 @@ function Home() {
     <>
     <nav className="bg-gray-900 py-4">
       <div className="container mx-auto flex justify-between items-center">
-        <a href="/" className="text-lg font-bold text-white">VS</a>
+      <NavLink to="/student">
+                <h1
+                  className="text-5xl text-white text-center pt-1 font-bold pb-1 pl-0"
+                  style={{ paddingLeft: "0px" }}
+                >
+                  V<span className="text-5xl text-orange-500 ">S </span>
+                </h1>
+              </NavLink>
         <button className="text-white text-xl focus:outline-none sm:hidden">
           <svg className="h-6 w-6 fill-current" viewBox="0 0 24 24">
             <path
@@ -31,7 +38,7 @@ function Home() {
     <Link to="/login" className="text-white hover:text-gray-300">Dashboard</Link>
   </li>
   <li className="mr-6">
-    <Link to="/success" className="text-white hover:text-gray-300">Success</Link>
+    <Link to="/signup" className="text-white hover:text-gray-300">Add school</Link>
   </li>
   <li className="mr-6">
     <Link to="/about" className="text-white hover:text-gray-300">About</Link>

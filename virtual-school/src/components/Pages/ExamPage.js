@@ -32,7 +32,6 @@
 
 // export default ExamPage;
 
-
 // import React, { useState, useEffect } from 'react';
 
 // const ExamPage = () => {
@@ -117,6 +116,7 @@
 // export default ExamPage;
 
 import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 const ExamPage = () => {
   const [timeLeft, setTimeLeft] = useState(60); // 60 seconds for the exam
@@ -130,7 +130,7 @@ const ExamPage = () => {
     } else if (isActive) {
       interval = setInterval(() => {
         setTimeLeft(timeLeft - 1);
-      }, 500);
+      }, 100);
     }
     return () => clearInterval(interval);
   }, [timeLeft, isActive]);
@@ -148,12 +148,16 @@ const ExamPage = () => {
 
   const renderAnswerInputs = () => {
     const inputs = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 1; i++) {
       // 10 questions in the exam
       inputs.push(
-        <div key={i}>
-          <label htmlFor={`answer${i}`}>Question {i + 1}:</label>
-          <input
+        <div key={i} className="flex flex-col p-10">
+          <label htmlFor={`answer${i}`}>
+            <span className="text-2xl pb-10 font-bold " style={{marginLeft:"350px", paddingBottom:"20px"}} >Question:</span> {}
+          </label>
+          <textarea
+            className="  w-1/2 p-1 bg-white border-red-400 drop-shadow-lg text-black"
+            style={{marginLeft:"350px"}}
             type="text"
             id={`answer${i}`}
             value={answers[i] || ""}
@@ -186,17 +190,32 @@ const ExamPage = () => {
   };
 
   return (
-    <div className="mt-5 ml-10">
-      <h1>Exam</h1>
-      <p>Time Left: {timeLeft} seconds</p>
-      <form onSubmit={handleFinishExam}>
+    <div className=" bg-gray-300 h-screen">
+       <NavLink to="/student">
+                <h1
+                  className="text-5xl text-black text-center pt-5 font-bold pb-3 pl-0"
+                  style={{ paddingLeft: "0px" }}
+                >
+                  V<span className="text-5xl text-orange-500 ">S </span>
+                </h1>
+              </NavLink>
+      <div className="text-center pb-3 text-3xl text-orange-400 font-bold mt">
+        <h1 className="pt-10">Exam</h1>
+      </div>
+      <div className="text-center pb-3 text-3xl text-orange-400 font-bold">
+        <p>
+          Time Left: <span className="text-black">{timeLeft} seconds</span>
+        </p>
+      </div>
+
+      <form onSubmit={handleFinishExam} >
         {renderAnswerInputs()}
         {isActive ? (
-          <button type="submit">Finish Exam</button>
+          <button className="bg-black text-white font-bold rounded-md" style={{marginLeft:"400px", padding:"5px"}} type="submit">Finish Exam</button>
         ) : (
           <div>
             {/* {renderAnswerInputs()} */}
-            <button type="submit" onClick={submitAnswers}>
+            <button type="submit" className="bg-orange-400 font-bold text-black rounded-md" style={{marginLeft:"400px", padding:"5px"}} onClick={submitAnswers}>
               Submit Answers
             </button>
           </div>
@@ -207,4 +226,3 @@ const ExamPage = () => {
 };
 
 export default ExamPage;
-

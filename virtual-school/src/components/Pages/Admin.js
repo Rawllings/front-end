@@ -7,8 +7,8 @@ import heroBcg2 from '../images/hero-bcg-2.jpg';
 import Services from './Services';
 import "../Pages/Dashboard.css";
 import Dashboard from "./Dashboard";
-import { FaSchool, FaChalkboardTeacher } from "react-icons/fa";
-import { MdOutlineSchool, MdOutlineLogin } from "react-icons/md";
+import {  FaChalkboardTeacher } from "react-icons/fa";
+import { MdOutlineSchool } from "react-icons/md";
 import { BsBook, BsTable } from "react-icons/bs";
 
 
@@ -19,11 +19,11 @@ import { BsBook, BsTable } from "react-icons/bs";
 function Admin() {
 
   const dashboardItems = [
-    {
-      path: "/admin/school",
-      name: "Add School",
-      icon: <FaSchool />,
-    },
+    // {
+    //   path: "/admin/school",
+    //   name: "Add School",
+    //   icon: <FaSchool />,
+    // },
     {
       path: "/admin/educator",
       name: "Add Educator",

@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useHistory } from "react";
+import React, { useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import Dashboard from "./Dashboard";
 import aboutImg from "../images/hero-bcg-6.jpg";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import { FaSchool, FaChalkboardTeacher } from "react-icons/fa";
+import {  FaChalkboardTeacher } from "react-icons/fa";
 import { MdOutlineSchool } from "react-icons/md";
 import { BsBook, BsTable } from "react-icons/bs";
 import axios from 'axios';
@@ -50,11 +50,11 @@ function CourseEntry() {
 
 
   const dashboardItems = [
-    {
-      path: "/admin/school",
-      name: "Add School",
-      icon: <FaSchool />,
-    },
+    // {
+    //   path: "/admin/school",
+    //   name: "Add School",
+    //   icon: <FaSchool />,
+    // },
     {
       path: "/admin/educator",
       name: "Add Educator",
@@ -117,7 +117,7 @@ function CourseEntry() {
                     <select id="schoolId" value={schoolId} onChange={(e) => setSchoolId(e.target.value)} required className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                       <option value="">Select a school</option>
                       {schools.map((school) => (
-                        <option key={school.id} value={school.id} style={{ display: "block" }}>{school.name}</option>
+                        <option key={school.id} value={school.id} style={{ display: "block" }}>{school.school_name}</option>
                       ))}
                     </select>
                   </div>
@@ -126,7 +126,7 @@ function CourseEntry() {
                     <select id="educatorId" value={educatorId} onChange={(e) => setEducatorId(e.target.value)} required className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                       <option value="">Select an educator</option>
                       {educators.map((educator) => (
-                        <option key={educator.id} value={educator.id} style={{ display: "block" }}>{educator.name}</option>
+                        <option key={educator.id} value={educator.id} style={{ display: "block" }}>{educator.educator_name}</option>
                       ))}
                     </select>
                   </div>

@@ -18,12 +18,12 @@ const Card = styled.div`
   border-radius: 10px;
 `;
 
-const Image = styled.img`
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  margin-bottom: 10px;
-`;
+// const Image = styled.img`
+//   width: 200px;
+//   height: 200px;
+//   object-fit: cover;
+//   margin-bottom: 10px;
+// `;
 
 const CourseName = styled.h3`
   font-size: 20px;
@@ -75,7 +75,7 @@ const ProductList = () => {
         <CardContainer>
             {Array.isArray(courses)?courses.map((course) => (
                 <Card key={course.id} className='px-20'>
-                    <Image src={`https://example.com/images/${course.id}.jpg`} alt={course.course_name} />
+                    {/* <Image src={`https://example.com/images/${course.id}.jpg`} alt={course.course_name} /> */}
                     <CourseName>{course.course_name}</CourseName>
                     <EnrolledStudents>Enrolled Students: {course.enrolled_students.length}</EnrolledStudents>
                     <DeleteButton onClick={() => handleDelete(course.id)}>Delete</DeleteButton>
