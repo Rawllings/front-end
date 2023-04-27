@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { FaSignOutAlt, FaBookOpen } from "react-icons/fa";
-import { BsGraphUp } from "react-icons/bs";
+import { BsGraphUp} from "react-icons/bs";
 import { SiTestcafe } from "react-icons/si";
 import { AuthContext } from "../Pages/AuthContext";
+import { HiDocumentMagnifyingGlass} from "react-icons/hi2";
+
 
 
 
@@ -80,6 +82,20 @@ function EducatorSideBar() {
                   </div>
                   <span className="flex-1 ml-3 text-2xl text-start">
                     My Courses
+                  </span>
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink
+                  className="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-black dark:hover:bg-gray-700"
+                  to="/plagiarism"
+                >
+                  <div className="text-xl">
+                    <HiDocumentMagnifyingGlass/>
+                  </div>
+                  <span className="flex-1 ml-3 text-2xl text-start">
+                    Plagiarism Checker
                   </span>
                 </NavLink>
               </li>
