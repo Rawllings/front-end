@@ -1,19 +1,17 @@
 import React from "react";
-import EducatorLoginSideBar from "./EducatorLoginSideBar";
+// import EducatorLoginSideBar from "./EducatorLoginSideBar";
 
 import EducatorSideBar from "./EducatorSideBar";
 
 function ScheduleExam() {
   // const isLoggedIn = sessionStorage.getItem("jwtToken") ? true : false;
-const email = sessionStorage.getItem("email");
+// const email = sessionStorage.getItem("email");
 
   // console.log(isLoggedIn);
 
   return (
 <>
 
-{
-  email ? (
     <>
     <div
       className="text-center text-5xl text-bold max-h-screen max-sm"
@@ -60,24 +58,9 @@ const email = sessionStorage.getItem("email");
      <EducatorSideBar />
     </div>
     </>
-  )
-  :
-  (
-    <>
-     <div
-            className="text-5xl"
-            style={{
-              text: "center",
-              paddingTop: "200px",
-              paddingLeft: "500px",
-            }}
-          >
-            <h1> Login to add the exams</h1>
-          </div>
-          <EducatorLoginSideBar />
-    </>
-  )
-}
+  
+ 
+
 
 </>
 

@@ -109,7 +109,7 @@ function Login( { schools, selectedSchoolId, setSelectedSchoolId} ) {
                     </option>
                   ))}
                 </select>
-                <p>Selected school ID: {selectedSchoolId}</p>
+                {/* <p>Selected school ID: {selectedSchoolId}</p> */}
               </div>
             </div>
             <button
