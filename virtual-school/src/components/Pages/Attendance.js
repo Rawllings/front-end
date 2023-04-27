@@ -8,7 +8,7 @@ function Attendance() {
   const [educatorId, setEducatorId] = useState();
   const [courses, setCourses] = useState([]);
 
-  console.log(courses)
+  // console.log(courses)
 
   useEffect(() => {
     fetch("/loggedin", {
@@ -20,7 +20,7 @@ function Attendance() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setEducatorId(data.educator.id);
+      setEducatorId(data.educator.id);
         fetch(`/educator_courses/${data.educator.id}`, {
           method: "GET",
           headers: {

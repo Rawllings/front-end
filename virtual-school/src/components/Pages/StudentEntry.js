@@ -5,10 +5,11 @@ import styled from "styled-components";
 import { FaSchool, FaChalkboardTeacher } from "react-icons/fa";
 import { MdOutlineSchool } from "react-icons/md";
 import { BsBook, BsTable } from "react-icons/bs";
-// import Swal from "sweetalert2";
+import Swal from "sweetalert2";
 
 
 function StudentEntry(  {schoolId}) {
+
   const [name, setName] = useState();
   const [email, setEmail] = useState();
 
@@ -43,18 +44,26 @@ function StudentEntry(  {schoolId}) {
       }),
     })
       .then((res) => res.json())
-      .then((response) => console.log(response));
+       .then((response) => {
+        console.log(response);
+        Swal.fire({
+          title: "Success!",
+          text: "Student created successfully",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+      });
   }
 
 
 
 
   const dashboardItems = [
-    {
-      path: "/admin/school",
-      name: "Add School",
-      icon: <FaSchool />,
-    },
+    // {
+    //   path: "/admin/school",
+    //   name: "Add School",
+    //   icon: <FaSchool />,
+    // },
     {
       path: "/admin/educator",
       name: "Add Educator",

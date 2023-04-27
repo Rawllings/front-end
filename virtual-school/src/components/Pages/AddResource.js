@@ -1,17 +1,15 @@
 import React from "react";
-import EducatorLoginSideBar from "./EducatorLoginSideBar";
+// import EducatorLoginSideBar from "./EducatorLoginSideBar";
 import EducatorSideBar from "./EducatorSideBar";
 function AddResource() {
 
-  const isLoggedIn = sessionStorage.getItem("jwtToken") ? true : false;
+  // const isLoggedIn = sessionStorage.getItem("jwtToken") ? true : false;
   // const email = sessionStorage.getItem("email");
   // console.log(email);
 
   return (
-    <>
-
-    {
-      isLoggedIn ? (
+  
+ 
 <>
 <div
       className="text-center text-5xl text-bold max-h-screen max-sm"
@@ -25,7 +23,7 @@ function AddResource() {
           paddingTop: "10px",
           marginLeft: "300px",
           marginRight: "300px",
-          paddingLeft: "200px",
+          paddingLeft: "100px",
         }}
       >
         <form>
@@ -97,26 +95,7 @@ function AddResource() {
       {/* FORM  */}
       <EducatorSideBar />
     </div>
-</>
-      )
-      :
-      (
-        <>
-         <div
-            className="text-5xl"
-            style={{
-              text: "center",
-              paddingTop: "200px",
-              paddingLeft: "500px",
-            }}
-          >
-            <h1> Login to add the resources</h1>
-          </div>
-          <EducatorLoginSideBar />
-        </>
 
-      )
-    }
 
 
 

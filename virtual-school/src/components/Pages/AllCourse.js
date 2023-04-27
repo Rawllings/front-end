@@ -3,8 +3,8 @@ import Dashboard from "./Dashboard";
 import aboutImg from '../images/hero-bcg-6.jpg'
 import styled from 'styled-components';
 import { NavLink } from "react-router-dom";
-import { FaSchool, FaChalkboardTeacher } from "react-icons/fa";
-import { MdOutlineSchool, MdOutlineLogin } from "react-icons/md";
+import {  FaChalkboardTeacher } from "react-icons/fa";
+import { MdOutlineSchool} from "react-icons/md";
 import { BsBook, BsTable } from "react-icons/bs";
 import { sample } from 'lodash';
 import { useState } from "react";
@@ -18,11 +18,11 @@ function AllCourse() {
 
     const options = [aboutImg, aboutImg, aboutImg, aboutImg];
     const dashboardItems = [
-        {
-            path: "/admin/school",
-            name: "Add School",
-            icon: <FaSchool />,
-        },
+        // {
+        //     path: "/admin/school",
+        //     name: "Add School",
+        //     icon: <FaSchool />,
+        // },
         {
             path: "/admin/educator",
             name: "Add Educator",

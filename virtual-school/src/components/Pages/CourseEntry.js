@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useHistory } from "react";
+import React, { useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import Dashboard from "./Dashboard";
 import aboutImg from "../images/hero-bcg-6.jpg";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import { FaSchool, FaChalkboardTeacher } from "react-icons/fa";
+import {  FaChalkboardTeacher } from "react-icons/fa";
 import { MdOutlineSchool } from "react-icons/md";
 import { BsBook, BsTable } from "react-icons/bs";
 import axios from 'axios';
@@ -50,11 +50,11 @@ function CourseEntry() {
 
 
   const dashboardItems = [
-    {
-      path: "/admin/school",
-      name: "Add School",
-      icon: <FaSchool />,
-    },
+    // {
+    //   path: "/admin/school",
+    //   name: "Add School",
+    //   icon: <FaSchool />,
+    // },
     {
       path: "/admin/educator",
       name: "Add Educator",

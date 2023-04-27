@@ -130,7 +130,7 @@ const ExamPage = () => {
     } else if (isActive) {
       interval = setInterval(() => {
         setTimeLeft(timeLeft - 1);
-      }, 1000);
+      }, 100);
     }
     return () => clearInterval(interval);
   }, [timeLeft, isActive]);

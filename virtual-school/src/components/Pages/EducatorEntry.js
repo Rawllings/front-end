@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Dashboard from "./Dashboard";
 import aboutImg from "../images/hero-bcg-4.jpg";
 import styled from "styled-components";
-import { FaSchool, FaChalkboardTeacher } from "react-icons/fa";
+import {  FaChalkboardTeacher } from "react-icons/fa";
 import {
   MdOutlineSchool,
   //  MdOutlineLogin
@@ -10,18 +10,16 @@ import {
 import { BsBook, BsTable } from "react-icons/bs";
 import Swal from "sweetalert2";
 
-function EducatorEntry() {
-  const [educatorName, setEducatorName] = useState();
-  const [schoolId, setSchoolId] = useState();
-
-
+function EducatorEntry( {schoolId} ) {
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
 
   const handleNameChange = (event) => {
-    setEducatorName(event.target.value);
+    setName(event.target.value);
   };
 
-  const handleSchoolChange = (event) => {
-    setSchoolId(event.target.value);
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
   };
 
   //   const token = localStorage.getItem("jwt");
@@ -29,39 +27,37 @@ function EducatorEntry() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    const educator = {
-      educatorName: educatorName,
-      schoolId: schoolId,
-
-    };
-
-    fetch("/educator", {
+   
+    fetch("/educators", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         // Authorization: `Bearer ${token}`
       },
-      body: JSON.stringify(educator),
+      body: JSON.stringify({
+        educator_name: name,
+        email: email,
+        school_id: schoolId
+      }),
     })
       .then((res) => res.json())
       .then((response) => {
         console.log(response);
         Swal.fire({
-          title: 'Success!',
-          text: 'Educator created successfully',
-          icon: 'success',
-          confirmButtonText: 'OK'
+          title: "Success!",
+          text: "Educator created successfully",
+          icon: "success",
+          confirmButtonText: "OK",
         });
-      })
-
+      });
   }
 
   const dashboardItems = [
-    {
-      path: "/admin/school",
-      name: "Add School",
-      icon: <FaSchool />,
-    },
+    // {
+    //   path: "/admin/school",
+    //   name: "Add School",
+    //   icon: <FaSchool />,
+    // },
     {
       path: "/admin/educator",
       name: "Add Educator",
@@ -105,15 +101,17 @@ function EducatorEntry() {
               </div>
 
               <div className="flex justify-center items-center h-screen">
-                <form className="bg-white shadow-md rounded px-8 pt-0 pb-8 mb-60 w-1/2" onSubmit={handleSubmit} >
-
+                <form
+                  className="bg-white shadow-md rounded px-8 pt-0 pb-8 mb-60 w-1/2"
+                  onSubmit={handleSubmit}
+                >
                   <div className="mb-4">
                     <label
                       className="block text-gray-700 font-bold mb-2"
                       htmlFor="email"
                     >
                       {/* Educator Course */}
-                      Educator name
+                      Name
                     </label>
                     <input
                       onChange={handleNameChange}
@@ -121,7 +119,7 @@ function EducatorEntry() {
                       id="name"
                       type="text"
                       name="name"
-                      placeholder="Enter your email"
+                      placeholder="Enter educator name"
                     />
                   </div>
                   <div className="mb-4">
@@ -129,61 +127,18 @@ function EducatorEntry() {
                       className="block text-gray-700 font-bold mb-2"
                       htmlFor="name"
                     >
-                      Educator Name
+                      Email
                     </label>
                     <input
-                      onClick={handleNameChange}
+                      onChange={handleEmailChange}
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      id="name"
-                      type="text"
-                      name="name"
-                      placeholder="Enter your name"
+                      id="email"
+                      type="email"
+                      name="email"
+                      placeholder="virtualschool@gmail.com"
                     />
                   </div>
-                  {/* <div className="mb-4">
-                    <label
-                      className="block text-gray-700 font-bold mb-2"
-                      htmlFor="email"
-                    >
-                      Educator gender
-                    </label>
-                    <input
-                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      id="gender"
-                      type="text"
-                      name="gender"
-                      placeholder="Enter your email"
-                    />
-                  </div> */}
-                  <div className="mb-4">
-                    <label
-                      className="block text-gray-700 font-bold mb-2"
-                      htmlFor="email"
-                    >
-                      {/* Educator Course */}
-                      school
-                    </label>
-                    <input
-                      onChange={handleSchoolChange}
-                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      id="school"
-                      type="text"
-                      name="school"
-                      placeholder="Enter your email"
-                    />
-                  </div>
-                  {/* <div className="mb-6">
-                                        <label className="block text-gray-700 font-bold mb-2" htmlFor="password">
-                                            Password
-                                        </label>
-                                        <input
-                                            className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                                            id="password"
-                                            type="password"
-                                            name="password"
-                                            placeholder="Enter your password"
-                                        />
-                                    </div> */}
+
                   <div className="flex items-center justify-between">
                     <button
                       className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
