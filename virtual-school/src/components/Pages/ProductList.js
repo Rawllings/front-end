@@ -44,7 +44,7 @@ const DeleteButton = styled.button`
   cursor: pointer;
 `;
 
-const App = () => {
+const ProductList = () => {
     const [courses, setCourses] = useState([]);
 
     useEffect(() => {
@@ -73,16 +73,16 @@ const App = () => {
 
     return (
         <CardContainer>
-            {courses.map((course) => (
+            {Array.isArray(courses)?courses.map((course) => (
                 <Card key={course.id} className='px-20'>
                     <Image src={`https://example.com/images/${course.id}.jpg`} alt={course.course_name} />
                     <CourseName>{course.course_name}</CourseName>
                     <EnrolledStudents>Enrolled Students: {course.enrolled_students.length}</EnrolledStudents>
                     <DeleteButton onClick={() => handleDelete(course.id)}>Delete</DeleteButton>
                 </Card>
-            ))}
+            )): null}
         </CardContainer>
     );
 };
 
-export default App;
+export default ProductList;
