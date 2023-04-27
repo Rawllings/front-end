@@ -1,47 +1,51 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Swal from 'sweetalert2';
+import tw from 'tailwind-styled-components';
 
-const CardContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+const CardContainer = tw.div`
+  flex
+  flex-wrap
+  justify-center
 `;
 
-const Card = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 20px;
-  padding: 20px;
-  border: 1px solid gray;
-  border-radius: 10px;
+const Card = tw.div`
+  flex
+  flex-col
+  items-center
+  m-20
+  p-20
+  border
+  border-gray-500
+  rounded-lg
 `;
 
-const Image = styled.img`
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  margin-bottom: 10px;
+const Image = tw.img`
+  w-64
+  h-64
+  object-cover
+  mb-10
 `;
 
-const CourseName = styled.h3`
-  font-size: 20px;
-  margin-bottom: 10px;
+const CourseName = tw.h3`
+  text-xl
+  font-semibold
+  mb-6
 `;
 
-const EnrolledStudents = styled.p`
-  font-size: 16px;
-  margin-bottom: 10px;
+const EnrolledStudents = tw.p`
+  text-lg
+  mb-6
 `;
 
-const DeleteButton = styled.button`
-  background-color: red;
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-  margin-top: 10px;
-  cursor: pointer;
+const DeleteButton = tw.button`
+  bg-red-500
+  hover:bg-red-700
+  text-white
+  font-bold
+  py-2
+  px-4
+  rounded
+  mt-6
 `;
 
 const App = () => {
@@ -57,24 +61,14 @@ const App = () => {
     }, []);
 
     const handleDelete = async (id) => {
-        const response = await fetch(`/courses/${id}`, {
-            method: 'DELETE',
-        });
-        if (response.ok) {
-            setCourses(courses.filter((course) => course.id !== id));
-        }
-        Swal.fire({
-            icon: 'success',
-            title: 'Course deleted successfully',
-            showConfirmButton: false,
-            timer: 1000
-        });
+        await fetch(`/courses/${id}`, { method: 'DELETE' });
+        setCourses(courses.filter((course) => course.id !== id));
     };
 
     return (
         <CardContainer>
             {courses.map((course) => (
-                <Card key={course.id} className='px-20'>
+                <Card key={course.id}>
                     <Image src={`https://example.com/images/${course.id}.jpg`} alt={course.course_name} />
                     <CourseName>{course.course_name}</CourseName>
                     <EnrolledStudents>Enrolled Students: {course.enrolled_students.length}</EnrolledStudents>

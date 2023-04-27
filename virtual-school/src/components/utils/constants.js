@@ -42,6 +42,6 @@ export const services = [
     },
 ]
 
-export const products_url = 'https://course-api.com/react-store-products'
+export const url = 'https://stark-caverns-43148.herokuapp.com'
 
 
