@@ -59,9 +59,11 @@ function Home() {
     <p className="text-gray-700 text-lg mb-6">
         Virtual schools helps you gain skills that will be useful to expand the Kenyan economy.
     </p>
+    <Link to="/login" >
     <button className="bg-orange-500 hover:bg-blue-700 text-white text-lg py-2 px-4 rounded-lg transition-colors duration-300">
           Get Started
     </button>
+    </Link>
     </div>
     </div>
     <div className="md:w-1/2 lg:w-3/5 mt-8 md:mt-0 pr-7">

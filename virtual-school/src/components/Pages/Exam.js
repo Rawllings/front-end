@@ -7,16 +7,16 @@ import Examcards from "./Examcards";
 function Exam() {
   const isLoggedIn = sessionStorage.getItem("jwtToken") ? true : false;
 
-  const [StudentId, setStudentId] = useState();
+  // const [StudentId, setStudentId] = useState();
   const [courses, setCourses] = useState([]);
-  const [enrollment, setEnrollment] = useState([]);
+  // const [enrollment, setEnrollment] = useState([]);
   const token = localStorage.getItem("jwt");
   // const email = sessionStorage.getItem("email");
 
 
 
-  console.log(enrollment)
-  console.log(courses)
+  // console.log(enrollment) 
+  // console.log(courses)
 
   useEffect(() => {
     fetch("/loggedin", {
