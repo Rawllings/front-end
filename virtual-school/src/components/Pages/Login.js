@@ -4,7 +4,7 @@
 
 
 
-import React, { useState, useContext,} from "react";
+import React, { useState, useContext, } from "react";
 
 
 import { AuthContext } from "../Pages/AuthContext";
@@ -13,18 +13,18 @@ import {
   NavLink,
 } from "react-router-dom";
 
-function Login( { schools, selectedSchoolId, setSelectedSchoolId} ) {
+function Login({ schools, selectedSchoolId, setSelectedSchoolId }) {
   const { login } = useContext(AuthContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
- 
+
 
 
 
   // const token = localStorage.getItem("jwt");
 
-  
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,9 +37,14 @@ function Login( { schools, selectedSchoolId, setSelectedSchoolId} ) {
   };
 
   // console.log(login);
-
+  // {
+  //   fetch("https://vs-app.herokuapp.com//educators")
+  //     .then((response) => response.json())
+  //     .then((data) => console.log(data))
+  // }
   return (
     <div>
+
       <div className="items-center pt-5 pl-32" style={{ paddingLeft: "500px" }}>
         <a href="/">
           <h1
@@ -98,7 +103,7 @@ function Login( { schools, selectedSchoolId, setSelectedSchoolId} ) {
             </div>
             <div>
 
-              
+
               <div>
                 <select value={selectedSchoolId} onChange={handleSchoolSelect}>
                   {" "}

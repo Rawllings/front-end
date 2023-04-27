@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CardCourse from "./CardCourse";
 import EducatorLoginSideBar from "./EducatorLoginSideBar";
+import { url } from "../utils/constants"
 
 function Attendance() {
   const token = localStorage.getItem("jwt");
@@ -8,8 +9,9 @@ function Attendance() {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
-    fetch("/loggedin", {
+    fetch(`https://vs-app.herokuapp.com/loggedin`, {
       method: "GET",
+      // mode: 'no-cors',
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
@@ -18,7 +20,7 @@ function Attendance() {
       .then((res) => res.json())
       .then((data) => {
         setEducatorId(data.educator.id);
-        fetch(`/educator_courses/${data.educator.id}`, {
+        fetch(`https://vs-app.herokuapp.com/educator_courses/${data.educator.id}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -29,7 +31,7 @@ function Attendance() {
           .then((data) => setCourses(data));
       });
   }, []);
-  
+
 
 
   return (

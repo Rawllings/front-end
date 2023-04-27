@@ -1,15 +1,18 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 // import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
+import { url } from "../utils/constants"
 
 function SignUp() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [level, setLevel] = useState("");
   const [schoolId, setSchoolId] = useState("");
 
   const handleEmailChange = (event) => {
-   setEmail(event.target.value);
+    setEmail(event.target.value);
   };
 
   const handlePasswordChange = (event) => {
@@ -36,7 +39,7 @@ function SignUp() {
       schoolId: schoolId
     };
 
-    fetch("/signup", {
+    fetch(`https://vs-app.herokuapp.com/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -54,6 +57,8 @@ function SignUp() {
             icon: "success",
             confirmButtonText: "OK",
           });
+          navigate('/login');
+
         } else if (level === "educator") {
           Swal.fire({
             title: "Success!",
@@ -61,6 +66,8 @@ function SignUp() {
             icon: "success",
             confirmButtonText: "OK",
           });
+          navigate('/login');
+
         } else if (level === "student") {
           Swal.fire({
             title: "Success!",
@@ -68,6 +75,8 @@ function SignUp() {
             icon: "success",
             confirmButtonText: "OK",
           });
+          navigate('/login');
+
         } else {
           Swal.fire({
             title: "Error!",
@@ -75,6 +84,8 @@ function SignUp() {
             icon: "fail",
             confirmButtonText: "OK",
           });
+          navigate('/login');
+
         }
       });
   }

@@ -99,6 +99,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
+import { url } from "../utils/constants";
 
 const Chat = ({ coursesId, studentId }) => {
   const [messages, setMessages] = useState([]);
@@ -106,8 +107,8 @@ const Chat = ({ coursesId, studentId }) => {
   const [student, setStudent] = useState("");
   const [course, setCourse] = useState("");
 
-  
- 
+
+
 
   const token = localStorage.getItem("jwt");
 
@@ -126,8 +127,9 @@ const Chat = ({ coursesId, studentId }) => {
 
   useEffect(() => {
     // Fetch messages from the server for the current course and student
-    fetch(`/chats`, {
+    fetch(`https://vs-app.herokuapp.com/chats`, {
       method: "GET",
+      // mode: 'no-cors',
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
@@ -151,8 +153,9 @@ const Chat = ({ coursesId, studentId }) => {
     // };
     // console.log(user);
 
-    fetch("/students", {
+    fetch(`https://vs-app.herokuapp.com/students`, {
       method: "POST",
+      // mode: 'no-cors',
       headers: {
         "Content-Type": "application/json",
         // Authorization: `Bearer ${token}`

@@ -9,6 +9,7 @@ import {
 } from "react-icons/md";
 import { BsBook, BsTable } from "react-icons/bs";
 import Swal from "sweetalert2";
+import { url } from "../utils/constants"
 
 function EducatorEntry() {
   const [educatorName, setEducatorName] = useState();
@@ -35,7 +36,7 @@ function EducatorEntry() {
 
     };
 
-    fetch("/educator", {
+    fetch("https://vs-app.herokuapp.com/educator", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

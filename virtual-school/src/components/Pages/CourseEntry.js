@@ -9,6 +9,7 @@ import { MdOutlineSchool } from "react-icons/md";
 import { BsBook, BsTable } from "react-icons/bs";
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { url } from "../utils/constants"
 
 function CourseEntry() {
   const [courseName, setCourseName] = useState('');
@@ -20,11 +21,11 @@ function CourseEntry() {
 
   useEffect(() => {
     const fetchSchools = async () => {
-      const response = await axios.get('/schools');
+      const response = await axios.get('https://vs-app.herokuapp.com/schools');
       setSchools(response.data);
     };
     const fetchEducators = async () => {
-      const response = await axios.get('/educators');
+      const response = await axios.get('https://vs-app.herokuapp.com/educators');
       setEducators(response.data);
     };
     fetchSchools();
@@ -38,14 +39,15 @@ function CourseEntry() {
       school_id: schoolId,
       educator_id: educatorId
     };
-    await axios.post('/courses', newCourse);
-    navigate('/admin/allcourse');
+    await axios.post(`https://vs-app.herokuapp.com/courses`, newCourse);
     Swal.fire({
       icon: 'success',
       title: 'Course created successfully',
       showConfirmButton: false,
       timer: 1000
     });
+    navigate('/admin/allcourse');
+
   };
 
 
@@ -137,53 +139,6 @@ function CourseEntry() {
                     </button>
                   </div>
                 </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                {/* <form
-                  className="bg-white shadow-md rounded px-8 pt-0 pb-8 mb-60 w-1/2"
-                  onSubmit={handleSubmit}
-                >
-                  <div className="mb-4">
-                    <label
-                      className="block text-gray-700 font-bold mb-2"
-                      htmlFor="name"
-                    >
-                      Course Name
-                    </label>
-                    <input
-                      value={name}
-                      onChange={handleNameChange}
-                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      id="name"
-                      type="text"
-                      name="name"
-                      placeholder="Enter your name"
-                    />
-                  </div>
-
-
-                  <div className="flex items-center justify-between">
-                    <button
-                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                      type="submit"
-                    >
-                      Submit
-                    </button>
-                  </div>
-                </form> */}
               </div>
             </article>
           </Wrapper>

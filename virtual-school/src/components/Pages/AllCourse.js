@@ -10,7 +10,7 @@ import { sample } from 'lodash';
 import { useState } from "react";
 // import CourseList from "./CourseList";
 import ProductList from "./ProductList";
-
+import { url } from "../utils/constants"
 function AllCourse() {
     const [selectedOption, setSelectedOption] = useState('');
     const [courseName, setCourseName] = useState('');
@@ -46,8 +46,9 @@ function AllCourse() {
     ];
 
     const handleButtonClick = () => {
-        fetch("/courses", {
+        fetch(`https://vs-app.herokuapp.com/courses`, {
             method: 'POST',
+            // mode: 'no-cors',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'

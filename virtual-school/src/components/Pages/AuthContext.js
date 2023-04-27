@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { url } from "../utils/constants";
 
 export const AuthContext = createContext();
 
@@ -12,17 +13,19 @@ export default function AuthProvider({ children }) {
   let storedUser = localStorage.getItem("user");
 
   let parsedUser = null;
+
   try {
     parsedUser = JSON.parse(storedUser);
-  } catch (e) {
-    console.log("Error parsing user from localStorage:", e);
+  } catch (error) {
+    console.log("Error parsing user from localStorage:", error);
   }
+
   const [user, setUser] = useState(parsedUser || null);
 
-  // responsible for the log in
   const login = (email, password) => {
-    fetch("/login", {
+    fetch("https://vs-app.herokuapp.com/login", {
       method: "POST",
+      // mode: 'no-cors',
       headers: {
         "Content-Type": "application/json",
       },
@@ -31,47 +34,39 @@ export default function AuthProvider({ children }) {
         password,
       }),
     })
-      .then((res) => res.json())
-      .then((response) => {
-        console.log(response);
-        // const { user, jwt } = response;
-        // setOnChange(!change);
-        // setUser(response.user);
-        // console.log(user)
-        // localStorage.setItem("user", JSON.stringify(user));
-        // localStorage.setItem("jwt", response.jwt);
-        // localStorage.setItem("email", response.user.email);
-        if (response.student) {
-          setOnChange(!change);
-          setUser(response.student);
-          console.log(user)
-          localStorage.setItem("user", JSON.stringify(user));
-          localStorage.setItem("jwt", response.jwt);
-          localStorage.setItem("email", user.email);
-          // localStorage.setItem("school_name", school.school_name);
-          sessionStorage.setItem("jwtToken", response.jwt);
-          navigate("/student")
-          // console.log(response)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
 
-        } else if (response.admin) {
+        if (data.student) {
           setOnChange(!change);
-          setUser(response.admin);
-          console.log(user)
-          localStorage.setItem("user", JSON.stringify(user));
-          localStorage.setItem("jwt", response.jwt);
-          localStorage.setItem("email", user.email);
-          navigate("/admin")
+          setUser(data.student);
 
-        } else if(response.educator) {
+          localStorage.setItem("user", JSON.stringify(data.student));
+          localStorage.setItem("jwt", data.jwt);
+          localStorage.setItem("email", data.student.email);
+
+          sessionStorage.setItem("jwtToken", data.jwt);
+          navigate("/student");
+        } else if (data.admin) {
           setOnChange(!change);
-          setUser(response.educator);
-          console.log(user)
-          localStorage.setItem("user", JSON.stringify(user));
-          localStorage.setItem("jwt", response.jwt);
-          localStorage.setItem("email", user.email);
-          navigate("/educator")
+          setUser(data.admin);
 
-        } else if (response.error) {
+          localStorage.setItem("user", JSON.stringify(data.admin));
+          localStorage.setItem("jwt", data.jwt);
+          localStorage.setItem("email", data.admin.email);
+
+          navigate("/admin");
+        } else if (data.educator) {
+          setOnChange(!change);
+          setUser(data.educator);
+
+          localStorage.setItem("user", JSON.stringify(data.educator));
+          localStorage.setItem("jwt", data.jwt);
+          localStorage.setItem("email", data.educator.email);
+
+          navigate("/educator");
+        } else if (data.error) {
           const Toast = Swal.mixin({
             toast: true,
             position: "top-end",
@@ -86,74 +81,17 @@ export default function AuthProvider({ children }) {
           Toast.fire({
             icon: "error",
             title: "Oops...",
-            text: response.error,
+            text: data.error,
           });
         }
-        //  else {
-        //   setUser(user);
-        //   sessionStorage.setItem("jwtToken", jwt);
-        //   // localStorage.setItem("jwt", response.jwt);
-        //   if (response.user.level === "admin") {
-        //     const Toast = Swal.mixin({
-        //       toast: true,
-        //       position: "center",
-        //       showConfirmButton: false,
-        //       timer: 1000,
-        //       timerProgressBar: true,
-        //       didOpen: (toast) => {
-        //         toast.addEventListener("mouseenter", Swal.stopTimer);
-        //         toast.addEventListener("mouseleave", Swal.resumeTimer);
-        //       },
-        //     });
-        //     Toast.fire({
-        //       icon: "success",
-        //       title: "Signed in successfully",
-        //     });
-        //     navigate("/admin");
-        //   } else if (response.user.level === "student") {
-        //     const Toast = Swal.mixin({
-        //       toast: true,
-        //       position: "center",
-        //       showConfirmButton: false,
-        //       timer: 1000,
-        //       timerProgressBar: true,
-        //       didOpen: (toast) => {
-        //         toast.addEventListener("mouseenter", Swal.stopTimer);
-        //         toast.addEventListener("mouseleave", Swal.resumeTimer);
-        //       },
-        //     });
-        //     Toast.fire({
-        //       icon: "success",
-        //       title: "Signed in successfully",
-        //     });
-
-        //     navigate("/student");
-        //   } else {
-        //     const Toast = Swal.mixin({
-        //       toast: true,
-        //       position: "center",
-        //       showConfirmButton: false,
-        //       timer: 1000,
-        //       timerProgressBar: true,
-        //       didOpen: (toast) => {
-        //         toast.addEventListener("mouseenter", Swal.stopTimer);
-        //         toast.addEventListener("mouseleave", Swal.resumeTimer);
-        //       },
-        //     });
-        //     Toast.fire({
-        //       icon: "success",
-        //       title: "Signed in successfully",
-        //     });
-
-        //     navigate("/educator");
-        //   }
-        // }
-      });
+      })
+      .catch((error) => console.log("Login error:", error));
   };
-  // Register
+
   const register = (name, email, password) => {
-    fetch("http://127.0.0.1:3000/signup", {
+    fetch("https://vs-app.herokuapp.com/signup", {
       method: "POST",
+      // mode: 'no-cors',
       headers: {
         "Content-Type": "application/json",
       },
@@ -163,83 +101,14 @@ export default function AuthProvider({ children }) {
         password,
       }),
     })
-      .then((res) => res.json())
-      .then((response) => {
-        setOnChange(!change);
-        if (response.error) {
-          // console.log(response.error)
-          const Toast = Swal.mixin({
-            toast: true,
-            position: "top-end",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener("mouseenter", Swal.stopTimer);
-              toast.addEventListener("mouseleave", Swal.resumeTimer);
-            },
-          });
-          Toast.fire({
-            icon: "error",
-            title: "Oops...",
-            text: response.error,
-          });
-        } else {
-          // setUser(response)
-          const Toast = Swal.mixin({
-            toast: true,
-            position: "top-end",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener("mouseenter", Swal.stopTimer);
-              toast.addEventListener("mouseleave", Swal.resumeTimer);
-            },
-          });
-          Toast.fire({
-            icon: "success",
-            title: "Registered successfully!",
-          });
-          navigate("/login");
-        }
-      });
-  };
-  // logout
-
-  const logout = () => {
-    setUser(null);
-    sessionStorage.removeItem("jwtToken");
-    localStorage.removeItem("user");
-    navigate("/login");
-  };
-  // check if user is logged in
-  useEffect(() => {
-    fetch("http://127.0.0.1:3000/loggedin ", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        console.log(response);
-        setUser(response);
-      });
-  }, [change]);
-  const contextData = {
-    user: user,
-    setUser: setUser,
-    login: login,
-    logout: logout,
-    register: register,
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.log("Register error:", error));
   };
 
   return (
-    <>
-      <AuthContext.Provider value={contextData}>
-        {children}
-      </AuthContext.Provider>
-    </>
+    <AuthContext.Provider value={{ user, login, register }}>
+      {children}
+    </AuthContext.Provider>
   );
 }

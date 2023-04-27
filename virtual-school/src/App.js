@@ -38,7 +38,8 @@ function App() {
   const [resource, setResource] = useState();
 
   useEffect(() => {
-    fetch("/resources", {
+    fetch("https://vs-app.herokuapp.com/resources", {
+
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -58,7 +59,7 @@ function App() {
   const [selectedSchoolId, setSelectedSchoolId] = useState(null);
 
   useEffect(() => {
-    fetch("/schools", {
+    fetch("https://vs-app.herokuapp.com/schools", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -66,10 +67,16 @@ function App() {
       },
     })
       .then((response) => response.json())
-      .then((data) => setSchools(data));
+      .then((data) => {
+        setSchools(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching schools:", error);
+      });
   }, []);
 
- 
+
+
 
 
   // EDUCATORS 
@@ -79,7 +86,7 @@ function App() {
 
 
   useEffect(() => {
-    fetch("/educators", {
+    fetch("https://vs-app.herokuapp.com/educators", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -98,7 +105,7 @@ function App() {
 
 
   useEffect(() => {
-    fetch("/courses", {
+    fetch("https://vs-app.herokuapp.com/courses", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -109,25 +116,25 @@ function App() {
       .then((data) => setCourses(data));
   }, [token]);
 
-  const courseId = Array.isArray(courses)? courses.map(course => {
+  const courseId = Array.isArray(courses) ? courses.map(course => {
     return (
       <div> {course.course_id} </div>
     )
-   
-    
+
+
   }) : null
 
   // console.log(courseId)
-  
 
-  
+
+
   // // STUDENT 
   const [students, setStudents] = useState();
   const [selectedStudentId, setSelectedStudentId] = useState(null);
 
 
   useEffect(() => {
-    fetch("/courses", {
+    fetch("https://vs-app.herokuapp.com/courses", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -146,7 +153,7 @@ function App() {
 
 
   useEffect(() => {
-    fetch("/exams", {
+    fetch("https://vs-app.herokuapp.com/exams", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -183,13 +190,13 @@ function App() {
           <Route path="student/exams" element={<Exam />} />
           <Route path="student/exam-page" element={<ExamPage />} />
           <Route path="student/results" element={<Result />} />
-          <Route path="student/chat" element={<Chat coursesId={courseId}/>} />
+          <Route path="student/chat" element={<Chat coursesId={courseId} />} />
 
           <Route path="/educator" element={<EducatorDashboard />} />
           <Route path="/educator/add-resources" element={<AddResource />} />
           <Route path="/educator/schedule-exam" element={<ScheduleExam />} />
           <Route path="/educator/attendance" element={<Attendance />} />
-          <Route path="/educator/:courseId/attendance/list" element={<AttendanceList/>} />
+          <Route path="/educator/:courseId/attendance/list" element={<AttendanceList />} />
           <Route
             path="/login"
             element={
