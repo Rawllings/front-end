@@ -117,7 +117,7 @@ function CourseEntry() {
                     <select id="schoolId" value={schoolId} onChange={(e) => setSchoolId(e.target.value)} required className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                       <option value="">Select a school</option>
                       {schools.map((school) => (
-                        <option key={school.id} value={school.id} style={{ display: "block" }}>{school.name}</option>
+                        <option key={school.id} value={school.id} style={{ display: "block" }}>{school.school_name}</option>
                       ))}
                     </select>
                   </div>
@@ -126,7 +126,7 @@ function CourseEntry() {
                     <select id="educatorId" value={educatorId} onChange={(e) => setEducatorId(e.target.value)} required className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                       <option value="">Select an educator</option>
                       {educators.map((educator) => (
-                        <option key={educator.id} value={educator.id} style={{ display: "block" }}>{educator.name}</option>
+                        <option key={educator.id} value={educator.id} style={{ display: "block" }}>{educator.educator_name}</option>
                       ))}
                     </select>
                   </div>

@@ -15,7 +15,7 @@ function EducatorLoginSideBar() {
     >
       {/* <div className="container mx-auto flex items-center justify-between px-4 py-3"> */}
       <div
-        className=" text-4xl xl:font-bold font-weight: 600 pt-5 pb-3 text-center pl-20"
+        className=" text-3xl xl:font-bold font-weight: 600 pt-5 pb-3 text-center pl-20"
         style={{ paddingLeft: "373px", fontSize: "70px" }}
       >
         Educator
@@ -75,9 +75,7 @@ function EducatorLoginSideBar() {
                 <div className="text-xl">
                   <BsGraphUp />
                 </div>
-                <span className="flex-1 ml-3 text-2xl text-start">
-                  Attendance
-                </span>
+                <span className="flex-1 ml-3 text-2xl text-start">My Courses </span>
               </NavLink>
             </li>
 
