@@ -201,7 +201,7 @@ function App() {
           <Route path="student/exams" element={<Exam />} />
           <Route path="student/:courseId/exam-page" element={<ExamPage />} />
           <Route path="student/results" element={<Result />} />
-          <Route path="student/chat" element={<Chat coursesId={courseId}/>} />
+          <Route path="student/:courseId/chat" element={<Chat coursesId={courseId}/>} />
 
           <Route path="/educator" element={<EducatorDashboard />} />
           <Route path="/educator/add-resources" element={<AddResource />} />
