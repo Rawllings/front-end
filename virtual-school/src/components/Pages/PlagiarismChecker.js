@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import EducatorSideBar from "./EducatorSideBar";
 
 function PlagiarismChecker() {
   const [text1, setText1] = useState("");
@@ -49,8 +50,18 @@ function PlagiarismChecker() {
   }
 
   return (
+    <>
+
+<div
+        className="text-3xl"
+        style={{
+          text: "center",
+          paddingTop: "70px",
+          paddingLeft: "260px",
+        }}
+      >
 <div className="bg-white rounded-lg shadow-lg p-6">
-  <h1 className="text-center text-5xl font-bold text-orange-500 mb-8">Plagiarism Checker</h1>
+  <h1 className="text-center text-3xl font-bold text-orange-500 mb-8">Plagiarism Checker</h1>
   <div className="flex flex-col md:flex-row justify-center items-center md:space-x-12">
     <div className="w-full md:w-1/2 mb-6 md:mb-0">
       <label htmlFor="text1" className="text-orange-500 text-lg font-semibold mb-2 block">
@@ -114,13 +125,13 @@ function PlagiarismChecker() {
       </div>
     </div>
   )}
+  
 </div>
 
+</div>
+<EducatorSideBar />
 
-
-
-
-
+</>
 
 
   );

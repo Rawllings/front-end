@@ -62,7 +62,7 @@ function EducatorSideBar() {
 
               <li>
                 <NavLink
-                  to="/educator/schedule-exam"
+                  to="/educator/exam"
                   className="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-black dark:hover:bg-gray-700"
                 >
                   <div className="text-xl">
@@ -91,7 +91,7 @@ function EducatorSideBar() {
                   className="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-black dark:hover:bg-gray-700"
                   to="/plagiarism"
                 >
-                  <div className="text-xl">
+                  <div className="text-3xl">
                     <HiDocumentMagnifyingGlass/>
                   </div>
                   <span className="flex-1 ml-3 text-2xl text-start">

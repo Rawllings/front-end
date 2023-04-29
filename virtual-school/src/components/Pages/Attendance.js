@@ -41,8 +41,8 @@ function Attendance() {
         className="text-3xl"
         style={{
           text: "center",
-          paddingTop: "200px",
-          paddingLeft: "500px",
+          paddingTop: "120px",
+          paddingLeft: "140px",
         }}
       >
         <div className="flex flex-wrap justify-center">

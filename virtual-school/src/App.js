@@ -29,6 +29,9 @@ import AttendanceList from "./components/Pages/AttendanceList";
 // import Swipper from "./components/Pages/Swipper";
 import AllCourse from "./components/Pages/AllCourse";
 import AddSchool from "./components/Pages/AddSchool";
+import EducatorExam from "./components/Pages/EducatorExam";
+import DisplayExams from "./components/Pages/DisplayExams";
+import ViewResults from "./components/Pages/ViewResults";
 
 
 function App() {
@@ -155,7 +158,7 @@ function App() {
       },
     })
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => setExams(data));
   }, [token]);
 
   // OWNER 
@@ -205,7 +208,9 @@ function App() {
 
           <Route path="/educator" element={<EducatorDashboard />} />
           <Route path="/educator/add-resources" element={<AddResource />} />
-          <Route path="/educator/schedule-exam" element={<ScheduleExam />} />
+          <Route path="/educator/exam" element={<EducatorExam />} />
+          <Route path="/educator/exams/:courseId" element={<DisplayExams/>}/>
+          <Route path="/educator/exams/:courseId/exam/:examId" element={<ViewResults/>}/>
           <Route path="/educator/attendance" element={<Attendance />} />
           <Route path="/educator/:courseId/attendance/list" element={<AttendanceList/>} />
           <Route
