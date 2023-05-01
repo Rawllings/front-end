@@ -34,13 +34,6 @@ export default function AuthProvider({ children }) {
       .then((res) => res.json())
       .then((response) => {
         console.log(response);
-        // const { user, jwt } = response;
-        // setOnChange(!change);
-        // setUser(response.user);
-        // console.log(user)
-        // localStorage.setItem("user", JSON.stringify(user));
-        // localStorage.setItem("jwt", response.jwt);
-        // localStorage.setItem("email", response.user.email);
         if (response.student) {
           setOnChange(!change);
           setUser(response.student);

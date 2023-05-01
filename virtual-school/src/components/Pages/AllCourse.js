@@ -62,6 +62,8 @@ function AllCourse() {
         setSelectedOption(randomOption);
     };
 
+  const email = localStorage.getItem("email");
+
 
     return (
         <>
@@ -77,8 +79,11 @@ function AllCourse() {
                 <Dashboard dashboardItems={dashboardItems} />
                 <div className="bg-orange-400 absolute top-0 w-10/12 h-20" style={{ left: 250 }}>
                     {/* <div className="container mx-auto flex items-center justify-between px-4 py-3"> */}
-                    <div className=" text-4xl xl:font-bold font-weight: 600 px-20 py-5">
+                    <div className=" text-4xl xl:font-bold font-weight: 600 flex px-20 py-5">
                         Administrator
+                        <div>
+                <h1 className="text-6xl" style={{marginTop:"15px", marginLeft:"300px"}}> {email ? <h1 className="text-xs pb-3">Welcome {email}</h1> : null}</h1>
+              </div>
                     </div>
 
                     {/* <Wrapper className='page relative section section-center px-30 py-25'>

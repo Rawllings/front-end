@@ -9,17 +9,18 @@ import {
 } from "react-icons/md";
 import { BsBook, BsTable } from "react-icons/bs";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 function EducatorEntry( {schoolId} ) {
   const [name, setName] = useState();
-  const [email, setEmail] = useState();
+  const [emails, setEmails] = useState();
 
   const handleNameChange = (event) => {
     setName(event.target.value);
   };
 
   const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+    setEmails(event.target.value);
   };
 
   //   const token = localStorage.getItem("jwt");
@@ -79,6 +80,9 @@ function EducatorEntry( {schoolId} ) {
       icon: <BsTable />,
     },
   ];
+
+  const email = localStorage.getItem("email");
+
   return (
     <>
       <div>
@@ -88,8 +92,11 @@ function EducatorEntry( {schoolId} ) {
           style={{ left: 200 }}
         >
           {/* <div className="container mx-auto flex items-center justify-between px-4 py-3"> */}
-          <div className=" text-4xl xl:font-bold font-weight: 600 px-20 py-5">
+          <div className=" text-4xl xl:font-bold font-weight: 600 px-20 flex py-5">
             Administrator
+            <div>
+                <h1 className="text-6xl" style={{marginTop:"15px", marginLeft:"300px"}}> {email ? <h1 className="text-xs pb-3">Welcome {email}</h1> : null}</h1>
+              </div>
           </div>
 
           <Wrapper className="page relative section section-center px-5 py-20">
@@ -131,6 +138,7 @@ function EducatorEntry( {schoolId} ) {
                     </label>
                     <input
                       onChange={handleEmailChange}
+                      value={emails}
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       id="email"
                       type="email"
@@ -146,6 +154,18 @@ function EducatorEntry( {schoolId} ) {
                     >
                       Submit
                     </button>
+                  </div>
+                  <div className="flex">
+                  <Link to="/signup">
+                    <div className=" items-center justify-between">
+                      <button
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        type="submit"
+                      >
+                        Add
+                      </button>
+                    </div>
+                  </Link>
                   </div>
                 </form>
               </div>

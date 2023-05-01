@@ -39,7 +39,7 @@ function Dashboard({ dashboardItems, children }) {
             >
               <NavLink to="/admin">
                 <h1
-                  className="text-5xl text-white font-bold mx-20 pb-5 pl-10 "
+                  className="text-5xl text-white font-bold mx-20 pb-1 pl-10 "
                   style={{ paddingLeft: "0px" }}
                 >
                   V<span className="text-5xl text-orange-500 ">S </span>
