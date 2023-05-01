@@ -32,12 +32,13 @@ import AddSchool from "./components/Pages/AddSchool";
 import EducatorExam from "./components/Pages/EducatorExam";
 import DisplayExams from "./components/Pages/DisplayExams";
 import ViewResults from "./components/Pages/ViewResults";
+import ChatPage from "./components/Pages/ChatPage";
 
 
 function App() {
   const token = localStorage.getItem("jwt");
 
-  // RECOURCES 
+  // RECOURCES
 
   const [resource, setResource] = useState();
 
@@ -56,7 +57,7 @@ function App() {
       });
   }, [token]);
 
-  // SCHOOLS 
+  // SCHOOLS
 
   const [schools, setSchools] = useState([]);
   const [selectedSchoolId, setSelectedSchoolId] = useState(null);
@@ -73,14 +74,10 @@ function App() {
       .then((data) => setSchools(data));
   }, []);
 
- 
-
-
-  // EDUCATORS 
+  // EDUCATORS
 
   const [educators, setEducators] = useState();
   const [selectedEducatorId, setSelectedEducatorId] = useState(null);
-
 
   useEffect(() => {
     fetch("/educators", {
@@ -94,12 +91,10 @@ function App() {
       .then((data) => setEducators(data));
   }, [token]);
 
-
-  // COURSES 
+  // COURSES
 
   const [courses, setCourses] = useState();
   const [selectedCoursesId, setSelectedCoursesId] = useState(null);
-
 
   useEffect(() => {
     fetch("/courses", {
@@ -113,22 +108,17 @@ function App() {
       .then((data) => setCourses(data));
   }, [token]);
 
-  const courseId = Array.isArray(courses)? courses.map(course => {
-    return (
-      <div> {course.course_id} </div>
-    )
-   
-    
-  }) : null
+  const courseId = Array.isArray(courses)
+    ? courses.map((course) => {
+        return <div> {course.course_id} </div>;
+      })
+    : null;
 
   // console.log(courseId)
-  
 
-  
-  // // STUDENT 
+  // // STUDENT
   const [students, setStudents] = useState();
   const [selectedStudentId, setSelectedStudentId] = useState(null);
-
 
   useEffect(() => {
     fetch("/courses", {
@@ -142,12 +132,10 @@ function App() {
       .then((data) => setEducators(data));
   }, [token]);
 
-
-  // EXAM 
+  // EXAM
 
   const [exams, setExams] = useState();
   const [selectedExamId, setSelectedExamId] = useState(null);
-
 
   useEffect(() => {
     fetch("/exams", {
@@ -161,7 +149,7 @@ function App() {
       .then((data) => setExams(data));
   }, [token]);
 
-  // OWNER 
+  // OWNER
 
   const [owner, setOwner] = useState([]);
   const [selectedOwnerId, setSelectedOwnerId] = useState(null);
@@ -178,9 +166,6 @@ function App() {
       .then((data) => setOwner(data));
   }, []);
 
-
-
-
   return (
     <BrowserRouter>
       <AuthProvider>
@@ -189,12 +174,27 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/landing" element={<Landing />} />
           <Route path="/admin" element={<Admin />} />
-          <Route path="/admin/student" element={<StudentEntry schoolId={selectedSchoolId} />} />
-          <Route path="/admin/course" element={<CourseEntry schoolId={selectedSchoolId} />} />
-          <Route path="/admin/educator" element={<EducatorEntry schoolId={selectedSchoolId} />} />
-          <Route path="/admin/allcourse" element={<AllCourse schoolId={selectedSchoolId} />} />
+          <Route
+            path="/admin/student"
+            element={<StudentEntry schoolId={selectedSchoolId} />}
+          />
+          <Route
+            path="/admin/course"
+            element={<CourseEntry schoolId={selectedSchoolId} />}
+          />
+          <Route
+            path="/admin/educator"
+            element={<EducatorEntry schoolId={selectedSchoolId} />}
+          />
+          <Route
+            path="/admin/allcourse"
+            element={<AllCourse schoolId={selectedSchoolId} />}
+          />
 
-          <Route path="/admin/school" element={<SchoolEntry ownerId={selectedOwnerId}/>} />
+          <Route
+            path="/admin/school"
+            element={<SchoolEntry ownerId={selectedOwnerId} />}
+          />
 
           <Route path="/student" element={<StudentDashboard />} />
           <Route
@@ -202,17 +202,32 @@ function App() {
             element={<Resource resource={resource} />}
           />
           <Route path="student/exams" element={<Exam />} />
-          <Route path="student/:courseId/exam-page" element={<ExamPage />} />
+          <Route
+            path="student/:courseId/exam-page"
+            element={
+              <ExamPage
+                examId={selectedExamId}
+                studentId={selectedStudentId}
+                courseId={selectedCoursesId}
+              />
+            }
+          />
           <Route path="student/results" element={<Result />} />
-          <Route path="student/:courseId/chat" element={<Chat coursesId={courseId}/>} />
-
+          <Route path="student/chat" element={<Chat coursesId={courseId} />} />
+          <Route
+            path="student/:courseId/chat"
+            element={<ChatPage coursesId={courseId} />}
+          />
           <Route path="/educator" element={<EducatorDashboard />} />
           <Route path="/educator/add-resources" element={<AddResource />} />
           <Route path="/educator/exam" element={<EducatorExam />} />
           <Route path="/educator/exams/:courseId" element={<DisplayExams/>}/>
           <Route path="/educator/exams/:courseId/exam/:examId" element={<ViewResults/>}/>
           <Route path="/educator/attendance" element={<Attendance />} />
-          <Route path="/educator/:courseId/attendance/list" element={<AttendanceList/>} />
+          <Route
+            path="/educator/:courseId/attendance/list"
+            element={<AttendanceList />}
+          />
           <Route
             path="/login"
             element={
@@ -223,15 +238,24 @@ function App() {
               />
             }
           />
-          <Route path="/signup" element={<SignUp />} />
+          <Route
+            path="/signup"
+            element={<SignUp schoolId={selectedSchoolId} />}
+          />
 
           <Route path="/educator" element={<Educator />} />
 
           <Route path="/plagiarism" element={<PlagiarismChecker />} />
-          
-          <Route path="/signup/add-school" element={< AddSchool ownerId={selectedOwnerId} schoolId={selectedSchoolId}/>} />
 
-
+          <Route
+            path="/signup/add-school"
+            element={
+              <AddSchool
+                ownerId={selectedOwnerId}
+                schoolId={selectedSchoolId}
+              />
+            }
+          />
         </Routes>
       </AuthProvider>
     </BrowserRouter>
