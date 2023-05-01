@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import EducatorLoginSideBar from "./EducatorLoginSideBar";
+// import EducatorLoginSideBar from "./EducatorLoginSideBar";
 import EducatorSideBar from "./EducatorSideBar";
 import { useDropzone } from "react-dropzone";
 
@@ -119,7 +119,7 @@ function AddResource() {
           </div>
         </div>
       </div>
-      <EducatorLoginSideBar />
+      <EducatorSideBar />
     </>
   );
 }
