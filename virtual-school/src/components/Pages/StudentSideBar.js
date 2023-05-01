@@ -110,7 +110,7 @@ function StudentSideBar() {
                 <li>
                   <NavLink
                     className="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-black dark:hover:bg-gray-700"
-                    style={{ marginTop: "200px" }}
+                    style={{ marginTop: "150px" }}
                     to="/login"
                   >
                     <div className="text-xl">

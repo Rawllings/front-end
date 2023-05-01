@@ -47,7 +47,7 @@ function AddResource() {
             style={{
               text: "center",
               paddingTop: "200px",
-              paddingLeft: "100px",
+              paddingLeft: "60px",
             }}
           >
             <div className="container flex-col mx-auto ">

@@ -220,6 +220,7 @@ function App() {
           />
           <Route path="/educator" element={<EducatorDashboard />} />
           <Route path="/educator/add-resources" element={<AddResource />} />
+          <Route path="/educator/schedule-exam" element={<ScheduleExam />} />
           <Route path="/educator/exam" element={<EducatorExam />} />
           <Route path="/educator/exams/:courseId" element={<DisplayExams/>}/>
           <Route path="/educator/exams/:courseId/exam/:examId" element={<ViewResults/>}/>
@@ -245,7 +246,7 @@ function App() {
 
           <Route path="/educator" element={<Educator />} />
 
-          <Route path="/plagiarism" element={<PlagiarismChecker />} />
+          <Route path="educator/plagiarism" element={<PlagiarismChecker />} />
 
           <Route
             path="/signup/add-school"
