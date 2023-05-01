@@ -2,8 +2,9 @@ import React, { useCallback, useEffect, useState } from "react";
 // import EducatorLoginSideBar from "./EducatorLoginSideBar";
 import EducatorSideBar from "./EducatorSideBar";
 import { useDropzone } from "react-dropzone";
+import Swal from "sweetalert2";
 
-function AddResource() {
+function AddResource({ courseId }) {
   const token = localStorage.getItem("jwt");
   const [educatorId, setEducatorId] = useState();
   const [courses, setCourses] = useState([]);
@@ -36,24 +37,129 @@ function AddResource() {
           .then((data) => setCourses(data));
       });
   }, []);
-  // console.log(courses)
+
+  const [name, setName] = useState();
+  const [file, setFile] = useState();
+  const [subject, setSubject] = useState();
+
+  const handleNameChange = (event) => {
+    console.log(event.target.value);
+  };
+
+  const handleFileChange = (event) => {
+    console.log(event.target.value);
+  };
+
+  const handleSsubjectChange = (event) => {
+    console.log(event.target.value);
+  };
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    // const user = {
+    //     name: name,
+    //   email: email,
+    //   schoolId: schoolId
+    // };
+    // console.log(user);
+
+    fetch("/students", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        // Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        resource_name: name,
+        course_id: courseId,
+        file: file,
+        subject: subject,
+      }),
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        console.log(response);
+        Swal.fire({
+          title: "Success!",
+          text: "Student created successfully",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+      });
+  }
+
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+
+  //   fetch('/resources', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({
+  //       resource_name:name,
+  //       course_id:courseId,
+  //       file: file,
+  //       subject: subject
+  //     })
+  //   })
+  // }
+  // // console.log(courses)
 
   // const isLoggedIn = sessionStorage.getItem("jwtToken") ? true : false;
   return (
     <>
-    
-          <div
-            className="text-3xl"
-            style={{
-              text: "center",
-              paddingTop: "200px",
-              paddingLeft: "100px",
-            }}
-          >
-            <div className="container flex-col mx-auto ">
-              <h1 className="text-3xl font-bold m-4 mx-auto ">Add Resources</h1>
-              <div className="p-6 bg-gray rounded-lg shadow-lg mx-auto">
-                <div
+      <div
+        className="text-3xl"
+        style={{
+          text: "center",
+          paddingTop: "100px",
+          paddingLeft: "100px",
+        }}
+      >
+        <div className="container flex-col mx-auto ">
+          <h1 className="text-3xl font-bold m-4 mx-auto ">Add Resources</h1>
+          <div className="p-6 bg-gray rounded-lg shadow-lg mx-auto">
+            <form className="text-center p-1">
+              <label className="text-xl p-1">Select file</label>
+              <input type="file" name="" className="text-lg" />
+              <div className="flex flex-col sm:flex-row">
+                <div className="w-full sm:w-1/3 mb-6 sm:mb-0 pt-5 ml-10">
+                  <label htmlFor="course" className="block font-bold mb-2">
+                    Course
+                  </label>
+                  <div className="relative ">
+                    <select
+                      id="course"
+                      className="appearance-none p-2  pr-8 mb-8 bg-white border border-gray-400 rounded-lg shadow leading-tight focus:outline-none focus:shadow-outline"
+                    >
+                      {" "}
+                      <option value="">Select a course</option>{" "}
+                      {courses &&
+                        courses.map((course) => (
+                          <option key={course.id} value={course.course_name}>
+                            {course.course_name}
+                          </option>
+                        ))}
+                    </select>
+                    <button className="bg-orange-600 hover:bg-blue-500 mt-6 p-2 px-4 rounded-lg transition-colors duration-300">
+                      Submit
+                    </button>
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                      <svg
+                        className="h-4 w-4 fill-current"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M10 12l-6-6h12z" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+            {/* <div
                   {...getRootProps()}
                   className="border-dashed border-2 border-gray-400 p-6 rounded-lg text-center mb-6"
                 >
@@ -84,47 +190,11 @@ function AddResource() {
                       </p>
                     </div>
                   )}
-                </div>
-                <div className="flex flex-col sm:flex-row">
-                  <div className="w-full sm:w-1/3 mb-6 sm:mb-0">
-                    <label htmlFor="course" className="block font-bold mb-2">
-                      Course
-                    </label>
-                    <div className="relative">
-                      <select
-                        id="course"
-                        className="appearance-none p-2 pr-8 mb-8 bg-white border border-gray-400 rounded-lg shadow leading-tight focus:outline-none focus:shadow-outline"
-                      >
-                        {" "}
-                        <option value="">Select a course</option>{" "}
-                        {courses &&
-                          courses.map((course) => (
-                            <option key={course.id} value={course.course_name}>
-                              {course.course_name}
-                            </option>
-                          ))}
-                      </select>
-                      <button className="bg-orange-600 hover:bg-blue-500 mt-6 p-2 px-4 rounded-lg transition-colors duration-300">
-                        Submit
-                      </button>
-                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                        <svg
-                          className="h-4 w-4 fill-current"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 20 20"
-                        >
-                          <path d="M10 12l-6-6h12z" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <EducatorSideBar />
+                </div> */}
           </div>
-
-      
+        </div>
+        <EducatorSideBar />
+      </div>
     </>
   );
 }

@@ -12,6 +12,7 @@ function ScheduleExam() {
   return (
 <>
 
+
     <>
     <div
       className="text-center text-5xl text-bold max-h-screen max-sm"
@@ -58,9 +59,8 @@ function ScheduleExam() {
      <EducatorSideBar />
     </div>
     </>
-  
  
-
+  
 
 </>
 

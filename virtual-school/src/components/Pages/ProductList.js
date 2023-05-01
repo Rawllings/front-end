@@ -78,7 +78,7 @@ const ProductList = () => {
                     {/* <Image src={`https://example.com/images/${course.id}.jpg`} alt={course.course_name} /> */}
                     <CourseName>{course.course_name}</CourseName>
                     <EnrolledStudents>Enrolled Students: {course.enrolled_students.length}</EnrolledStudents>
-                    <DeleteButton onClick={() => handleDelete(course.id)}>Delete</DeleteButton>
+                    <DeleteButton style={{backgroundColor:"green"}} onClick={() => handleDelete(course.id)}>Delete</DeleteButton>
                 </Card>
             )): null}
         </CardContainer>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Dashboard from "./Dashboard";
 import aboutImg from "../images/hero-bcg-4.jpg";
 import styled from "styled-components";
-import {  FaChalkboardTeacher } from "react-icons/fa";
+import { FaChalkboardTeacher } from "react-icons/fa";
 import {
   MdOutlineSchool,
   //  MdOutlineLogin
@@ -11,7 +11,7 @@ import { BsBook, BsTable } from "react-icons/bs";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 
-function EducatorEntry( {schoolId} ) {
+function EducatorEntry({ schoolId }) {
   const [name, setName] = useState();
   const [emails, setEmails] = useState();
 
@@ -28,7 +28,6 @@ function EducatorEntry( {schoolId} ) {
   function handleSubmit(e) {
     e.preventDefault();
 
-   
     fetch("/educators", {
       method: "POST",
       headers: {
@@ -38,7 +37,7 @@ function EducatorEntry( {schoolId} ) {
       body: JSON.stringify({
         educator_name: name,
         email: email,
-        school_id: schoolId
+        school_id: schoolId,
       }),
     })
       .then((res) => res.json())
@@ -92,11 +91,19 @@ function EducatorEntry( {schoolId} ) {
           style={{ left: 200 }}
         >
           {/* <div className="container mx-auto flex items-center justify-between px-4 py-3"> */}
-          <div className=" text-4xl xl:font-bold font-weight: 600 px-20 flex py-5">
+          <div className="bg-black text-white text-4xl xl:font-bold font-weight: 600 px-20 flex py-5">
             Administrator
             <div>
-                <h1 className="text-6xl" style={{marginTop:"15px", marginLeft:"300px"}}> {email ? <h1 className="text-xs pb-3">Welcome {email}</h1> : null}</h1>
-              </div>
+              <h1
+                className="text-6xl"
+                style={{ marginTop: "15px", marginLeft: "300px" }}
+              >
+                {" "}
+                {email ? (
+                  <h1 className="text-xs pb-3">Welcome {email}</h1>
+                ) : null}
+              </h1>
+            </div>
           </div>
 
           <Wrapper className="page relative section section-center px-5 py-20">
@@ -104,7 +111,7 @@ function EducatorEntry( {schoolId} ) {
             <article>
               <div className="title">
                 <h2 className="text-2xl font-bold">Add Educator</h2>
-                <div className="w-16 h-1 bg-gray-700"></div>
+                <div style={{color:"green"}} className="w-16 h-1 bg-green-500"></div>
               </div>
 
               <div className="flex justify-center items-center h-screen">
@@ -151,22 +158,12 @@ function EducatorEntry( {schoolId} ) {
                     <button
                       className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                       type="submit"
+                      style={{backgroundColor:"green"}}
                     >
                       Submit
                     </button>
                   </div>
-                  <div className="flex">
-                  <Link to="/signup">
-                    <div className=" items-center justify-between">
-                      <button
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                        type="submit"
-                      >
-                        Add
-                      </button>
-                    </div>
-                  </Link>
-                  </div>
+                  <div className="flex"></div>
                 </form>
               </div>
             </article>
