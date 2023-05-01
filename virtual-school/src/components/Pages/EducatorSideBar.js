@@ -93,7 +93,7 @@ function EducatorSideBar() {
               <li>
                 <NavLink
                   className="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-black dark:hover:bg-gray-700"
-                  to="/plagiarism"
+                  to="/educator/plagiarism"
                 >
                   <div className="text-xl">
                   <BsGraphUp />
