@@ -73,13 +73,13 @@ function AllCourse() {
                         className="text-5xl text-white font-bold pb-5 pl-0 "
                         style={{ paddingLeft: "20px" }}
                     >
-                        V<span className="text-5xl text-yellow-400 ">S </span>
+                        V<span className="text-5xl text-black ">S </span>
                     </h1>
                 </NavLink>
                 <Dashboard dashboardItems={dashboardItems} />
                 <div className="bg-orange-400 absolute top-0 w-10/12 h-20" style={{ left: 250 }}>
                     {/* <div className="container mx-auto flex items-center justify-between px-4 py-3"> */}
-                    <div className=" text-4xl xl:font-bold font-weight: 600 flex px-20 py-5">
+                    <div  className="bg-black text-white text-4xl xl:font-bold font-weight: 600 flex px-20 py-5">
                         Administrator
                         <div>
                 <h1 className="text-6xl" style={{marginTop:"15px", marginLeft:"300px"}}> {email ? <h1 className="text-xs pb-3">Welcome {email}</h1> : null}</h1>

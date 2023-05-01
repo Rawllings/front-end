@@ -20,6 +20,7 @@ function StudentDashboard() {
             className="text-center text-5xl text-bold max-h-screen max-sm"
             style={{
               marginTop: "100px",
+              overflow: "hidden",
               backgroundImage: "https://bit.ly/3GP68X0",
             }}
           >

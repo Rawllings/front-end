@@ -34,7 +34,6 @@ import DisplayExams from "./components/Pages/DisplayExams";
 import ViewResults from "./components/Pages/ViewResults";
 import ChatPage from "./components/Pages/ChatPage";
 
-
 function App() {
   const token = localStorage.getItem("jwt");
 
@@ -222,8 +221,11 @@ function App() {
           <Route path="/educator/add-resources" element={<AddResource />} />
           <Route path="/educator/schedule-exam" element={<ScheduleExam />} />
           <Route path="/educator/exam" element={<EducatorExam />} />
-          <Route path="/educator/exams/:courseId" element={<DisplayExams/>}/>
-          <Route path="/educator/exams/:courseId/exam/:examId" element={<ViewResults/>}/>
+          <Route path="/educator/exams/:courseId" element={<DisplayExams />} />
+          <Route
+            path="/educator/exams/:courseId/exam/:examId"
+            element={<ViewResults />}
+          />
           <Route path="/educator/attendance" element={<Attendance />} />
           <Route
             path="/educator/:courseId/attendance/list"

@@ -85,25 +85,40 @@ function StudentEntry(  {schoolId}) {
       icon: <BsTable />,
     },
   ];
+
+  // const email = localStorage.getItem("email");
+
   return (
     <>
       <div>
         <Dashboard dashboardItems={dashboardItems} />
         <div
-          className="bg-orange-400 absolute top-0 w- h-20"
+          className=" absolute top-0 w- h-20"
           style={{ left: 200 }}
         >
           {/* <div className="container mx-auto flex items-center justify-between px-4 py-3"> */}
-          <div className=" text-4xl xl:font-bold font-weight: 600 px-20 py-5">
+          <div className="bg-black text-white text-4xl xl:font-bold font-weight: 600 px-20 py-5">
             Administrator
+
+            <div>
+              <h1
+                className="text-6xl"
+                style={{ marginTop: "15px", marginLeft: "300px" }}
+              >
+                {" "}
+                {email ? (
+                  <h1 className="text-xs pb-3">Welcome {email}</h1>
+                ) : null}
+              </h1>
+            </div>
           </div>
 
           <Wrapper className="page relative section section-center px-5 py-20">
             <img src={aboutImg} className="mx-10" alt="nice desk" />
             <article>
               <div className="title">
-                <h2 className="text-2xl font-bold">Add Student</h2>
-                <div className="w-16 h-1 bg-gray-700"></div>
+                <h2 className="text-2xl text-black font-bold">Add Student</h2>
+                <div className="w-16 h-1 bg-green-500"></div>
               </div>
 
               <div className="flex justify-center items-center h-screen">
@@ -159,6 +174,7 @@ function StudentEntry(  {schoolId}) {
                     <button
                       className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                       type="submit"
+                      style={{backgroundColor:"green"}}
                     >
                       Submit
                     </button>

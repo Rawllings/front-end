@@ -13,7 +13,6 @@ import { Pagination } from "swiper";
 import LoginDashboard from "./LoginDashboard";
 
 function Resource({ resource }) {
-  
   const isLoggedIn = sessionStorage.getItem("jwtToken") ? true : false;
 
   return (
@@ -25,8 +24,10 @@ function Resource({ resource }) {
               style={{
                 paddingTop: "100px",
                 paddingLeft: "20px",
+                paddingRight:"10px",
+               
                 marginLeft: "250px",
-                marginRight: "10px",
+                marginRight: "0px",
               }}
             >
               <Swiper
@@ -46,7 +47,7 @@ function Resource({ resource }) {
                           <SwiperSlide>
                             <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                               <a href="/">
-                                <h5 class="mb-2 text-xl font-bold tracking-tight text-orange-500 dark:text-white">
+                                <h5 class="mb-2 font-bold tracking-tight text-orange-500 dark:text-white" style={{color: "green"}} >
                                   {resources.resource_name}
                                 </h5>
                               </a>
@@ -59,7 +60,8 @@ function Resource({ resource }) {
     </p> */}
                               <a
                                 href="/"
-                                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-orange-400 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                style={{backgroundColor:"green"}}
+                                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                               >
                                 View
                               </a>

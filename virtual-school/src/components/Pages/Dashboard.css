@@ -15,7 +15,7 @@ main {
   /* margin: 20px; */
 }
 .sidebar {
-  background: rgb(20, 4, 125);
+  background: green;
   color: #fff;
   height: 100vh;
   width: 250px;
@@ -25,11 +25,12 @@ main {
   display: flex;
   align-items: center;
   padding: 20px 15px;
+  overflow-y: hidden;
 }
 .logo {
   font-size: 30px;
   background-color: black;
-  padding: 10px 23px;
+  padding: 10px 5px;
   border-radius: 100%;
 }
 .bars {

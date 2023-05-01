@@ -86,7 +86,7 @@ function CourseEntry() {
             className="text-5xl text-white font-bold pb-5 pl-0 "
             style={{ paddingLeft: "20px" }}
           >
-            V<span className="text-5xl text-orange-500 ">S </span>
+            V<span className="text-5xl text-black ">S </span>
           </h1>
         </NavLink>
         <Dashboard dashboardItems={dashboardItems} />
@@ -95,7 +95,7 @@ function CourseEntry() {
           style={{ left: 200 }}
         >
           {/* <div className="container mx-auto flex items-center justify-between px-4 py-3"> */}
-          <div className=" text-4xl xl:font-bold font-weight: 600 px-20 flex py-5">
+          <div className="bg-black text-white text-4xl xl:font-bold font-weight: 600 px-20 flex py-5">
             Administrator
             <div>
               <h1
@@ -115,12 +115,12 @@ function CourseEntry() {
             <article>
               <div className="mb-4">
                 <h2
-                  className="block text-gray-700 font-bold mb-2"
+                  className="block text-black font-bold mb-2"
                   htmlFor="name"
                 >
                   Add Course
                 </h2>
-                <div className="w-16 h-1 bg-gray-700"></div>
+                <div className="w-16 h-1 bg-green-500"></div>
               </div>
 
               <div className="flex justify-center items-center h-screen">
@@ -201,6 +201,7 @@ function CourseEntry() {
                     <button
                       type="submit"
                       className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                      style={{backgroundColor:"green"}}
                     >
                       Create Course
                     </button>

@@ -32,7 +32,7 @@ function Dashboard({ dashboardItems, children }) {
               className="h-full px-3 py-2 overflow-y-auto sidebar"
               style={{
                 // backgroundColor: "blue",
-                paddingTop: "30px",
+                paddingTop: "20px",
                 paddingLeft: "20px",
                 paddingRight: "-20px",
               }}
@@ -42,7 +42,7 @@ function Dashboard({ dashboardItems, children }) {
                   className="text-5xl text-white font-bold mx-20 pb-1 pl-10 "
                   style={{ paddingLeft: "0px" }}
                 >
-                  V<span className="text-5xl text-orange-500 ">S </span>
+                  V<span className="text-5xl text-black ">S </span>
                 </h1>
               </NavLink>
               <ul className="space-y-2 font-medium">
@@ -60,12 +60,13 @@ function Dashboard({ dashboardItems, children }) {
                   </NavLink>
                   // </li>
                 ))}
-                <div style={{ paddingTop: "30px" }}>
-                  <hr className="border-1 items-center my-10"></hr>
-                </div>
+                
               </ul>
 
-              <Logout className="px-20" />
+              <Logout className="pt-2" style={{ marginTop: "-50px"}}  />
+              <div >
+                  {/* <hr style={{ marginTop: "-0px"}} className="border-1 items-center my-10"></hr> */}
+                </div>
             </div>
           </aside>
         </div>
