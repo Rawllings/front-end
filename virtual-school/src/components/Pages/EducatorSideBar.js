@@ -80,7 +80,21 @@ function EducatorSideBar() {
                     <BsGraphUp />
                   </div>
                   <span className="flex-1 ml-3 text-2xl text-start">
-                    My Courses
+                    Attendance
+                  </span>
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink
+                  className="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-black dark:hover:bg-gray-700"
+                  to="/educator/plagiarism"
+                >
+                  <div className="text-xl">
+                    <BsGraphUp />
+                  </div>
+                  <span className="flex-1 ml-3 text-2xl text-start">
+                    Plagiarism
                   </span>
                 </NavLink>
               </li>
