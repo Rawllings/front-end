@@ -43,15 +43,15 @@ function AddResource({ courseId }) {
   const [subject, setSubject] = useState();
 
   const handleNameChange = (event) => {
-    console.log(event.target.value);
+    setName(event.target.value);
   };
 
   const handleFileChange = (event) => {
-    console.log(event.target.value);
+    setFile(event.target.value);
   };
 
-  const handleSsubjectChange = (event) => {
-    console.log(event.target.value);
+  const handleSubjectChange = (event) => {
+    setSubject(event.target.value);
   };
 
   function handleSubmit(e) {
@@ -82,7 +82,7 @@ function AddResource({ courseId }) {
         console.log(response);
         Swal.fire({
           title: "Success!",
-          text: "Student created successfully",
+          text: "Resources created successfully",
           icon: "success",
           confirmButtonText: "OK",
         });
@@ -121,9 +121,18 @@ function AddResource({ courseId }) {
         <div className="container flex-col mx-auto ">
           <h1 className="text-3xl font-bold m-4 mx-auto ">Add Resources</h1>
           <div className="p-6 bg-gray rounded-lg shadow-lg mx-auto">
-            <form className="text-center p-1">
+            <form className="text-center p-1 flex flex-col" onSubmit={handleSubmit}>
+            <label htmlFor="course" className="block text-xl mb-2">
+                    Resource name
+                  </label>
+                  <input value={name} onChange={handleNameChange} type="text" />
+
+                  <label htmlFor="course" className="block text-xl pt-5 mb-2">
+                    Subject
+                  </label>
+                  <input value={subject} onChange={handleSubjectChange} type="text" />
               <label className="text-xl p-1">Select file</label>
-              <input type="file" name="" className="text-lg" />
+              <input type="file" name="" className="text-lg" value={file} onChange={handleFileChange}/>
               <div className="flex flex-col sm:flex-row">
                 <div className="w-full sm:w-1/3 mb-6 sm:mb-0 pt-5 ml-10">
                   <label htmlFor="course" className="block font-bold mb-2">
@@ -143,7 +152,7 @@ function AddResource({ courseId }) {
                           </option>
                         ))}
                     </select>
-                    <button className="bg-orange-600 hover:bg-blue-500 mt-6 p-2 px-4 rounded-lg transition-colors duration-300">
+                    <button className="bg-green-600 hover:bg-black hover:text-white mt-6 p-2 px-4 rounded-lg transition-colors duration-300">
                       Submit
                     </button>
                     <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
