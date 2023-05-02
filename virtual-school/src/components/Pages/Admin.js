@@ -7,7 +7,7 @@ import heroBcg2 from '../images/hero-bcg-2.jpg';
 import Services from './Services';
 import "../Pages/Dashboard.css";
 import Dashboard from "./Dashboard";
-import {  FaChalkboardTeacher } from "react-icons/fa";
+import { FaChalkboardTeacher } from "react-icons/fa";
 import { MdOutlineSchool } from "react-icons/md";
 import { BsBook, BsTable } from "react-icons/bs";
 
@@ -73,9 +73,9 @@ function Admin() {
         <Dashboard dashboardItems={dashboardItems} />
 
 
-        <div className="bg-orange-400 absolute top-0  h-20" style={{ left: 250 }}>
+        <div className="bg-black absolute top-0  h-20" style={{ left: 250 }}>
           {/* <div className="container mx-auto flex items-center justify-between px-4 py-3"> */}
-          <div className=" text-4xl xl:font-bold font-weight: 600 px-20 py-5">
+          <div className=" text-white text-4xl xl:font-bold font-weight: 600 px-20 py-5">
             Administrator
           </div>
 

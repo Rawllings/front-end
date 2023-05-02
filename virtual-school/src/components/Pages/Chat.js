@@ -4,8 +4,13 @@ import StudentSideBar from "./StudentSideBar";
 // import CardCourse from "./CardCourse";
 // import Examcards from "./Examcards";
 import ChatCards from "./ChatCards";
+// import Button from './ChatButton';
+import styled from 'styled-components';
 
 function Chat() {
+  const handleClick = () => {
+    window.location.href = 'https://whats-app-u6t0.onrender.com';
+  };
   const isLoggedIn = sessionStorage.getItem("jwtToken") ? true : false;
 
   // const [StudentId, setStudentId] = useState();
@@ -67,7 +72,9 @@ function Chat() {
                 ))}
               </div>
             </div>
-
+            <Center>
+              <Button onClick={handleClick}>Go to Class Chatroom</Button>
+            </Center>
             {/* SIDE BAR  */}
             <StudentSideBar />
           </div>
@@ -90,5 +97,31 @@ function Chat() {
     </>
   );
 }
+
+
+const Center = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
+
+const Button = styled.button`
+  font-size: 20px;
+  font-weight: bold;
+  padding: 16px 32px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #3e8e41;
+  }
+`;
+
+
+
 
 export default Chat;
