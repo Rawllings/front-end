@@ -9,6 +9,7 @@ import { MdOutlineSchool } from "react-icons/md";
 import { BsBook, BsTable } from "react-icons/bs";
 import axios from "axios";
 import Swal from "sweetalert2";
+import AdminSideBar from "./AdminSideBar";
 
 function CourseEntry() {
   const [courseName, setCourseName] = useState("");
@@ -89,7 +90,8 @@ function CourseEntry() {
             V<span className="text-5xl text-black ">S </span>
           </h1>
         </NavLink>
-        <Dashboard dashboardItems={dashboardItems} />
+        {/* <Dashboard dashboardItems={dashboardItems} /> */}
+        <AdminSideBar />
         <div
           className="bg-orange-400 absolute top-0 w- h-20"
           style={{ left: 200 }}
@@ -201,7 +203,7 @@ function CourseEntry() {
                     <button
                       type="submit"
                       className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                      style={{backgroundColor:"green"}}
+                      style={{ backgroundColor: "green" }}
                     >
                       Create Course
                     </button>

@@ -6,19 +6,20 @@ import { FaSchool, FaChalkboardTeacher } from "react-icons/fa";
 import { MdOutlineSchool } from "react-icons/md";
 import { BsBook, BsTable } from "react-icons/bs";
 import Swal from "sweetalert2";
+import AdminSideBar from "./AdminSideBar";
 
 
-function StudentEntry(  {schoolId}) {
+function StudentEntry({ schoolId }) {
 
   const [name, setName] = useState();
   const [email, setEmail] = useState();
 
   const handleNameChange = (event) => {
-   setName(event.target.value);
+    setName(event.target.value);
   };
 
   const handleEmailChange = (event) => {
-   setEmail(event.target.value);
+    setEmail(event.target.value);
   };
 
   function handleSubmit(e) {
@@ -39,12 +40,12 @@ function StudentEntry(  {schoolId}) {
       },
       body: JSON.stringify({
         student_name: name,
-       email: email,
-      school_id: schoolId
+        email: email,
+        school_id: schoolId
       }),
     })
       .then((res) => res.json())
-       .then((response) => {
+      .then((response) => {
         console.log(response);
         Swal.fire({
           title: "Success!",
@@ -91,7 +92,8 @@ function StudentEntry(  {schoolId}) {
   return (
     <>
       <div>
-        <Dashboard dashboardItems={dashboardItems} />
+        {/* <Dashboard dashboardItems={dashboardItems} /> */}
+        <AdminSideBar />
         <div
           className=" absolute top-0 w- h-20"
           style={{ left: 200 }}
@@ -122,7 +124,7 @@ function StudentEntry(  {schoolId}) {
               </div>
 
               <div className="flex justify-center items-center h-screen">
-                <form  onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-0 pb-8 mb-60 w-1/2">
+                <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-0 pb-8 mb-60 w-1/2">
                   <div className="mb-4">
                     <label
                       className="block text-gray-700 font-bold mb-2"
@@ -131,8 +133,8 @@ function StudentEntry(  {schoolId}) {
                       Name
                     </label>
                     <input
-                    value={name}
-                    onChange={handleNameChange}
+                      value={name}
+                      onChange={handleNameChange}
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       id="name"
                       type="text"
@@ -148,8 +150,8 @@ function StudentEntry(  {schoolId}) {
                       email
                     </label>
                     <input
-                    value={email}
-                    onChange={handleEmailChange}
+                      value={email}
+                      onChange={handleEmailChange}
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       id="name"
                       type="text"
@@ -174,7 +176,7 @@ function StudentEntry(  {schoolId}) {
                     <button
                       className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                       type="submit"
-                      style={{backgroundColor:"green"}}
+                      style={{ backgroundColor: "green" }}
                     >
                       Submit
                     </button>

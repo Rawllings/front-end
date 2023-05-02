@@ -10,6 +10,7 @@ import {
 import { BsBook, BsTable } from "react-icons/bs";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import AdminSideBar from "./AdminSideBar";
 
 function EducatorEntry({ schoolId }) {
   const [name, setName] = useState();
@@ -85,7 +86,8 @@ function EducatorEntry({ schoolId }) {
   return (
     <>
       <div>
-        <Dashboard dashboardItems={dashboardItems} />
+        {/* <Dashboard dashboardItems={dashboardItems} /> */}
+        <AdminSideBar />
         <div
           className="bg-orange-400 absolute top-0 w- h-20"
           style={{ left: 200 }}
@@ -111,7 +113,7 @@ function EducatorEntry({ schoolId }) {
             <article>
               <div className="title">
                 <h2 className="text-2xl font-bold">Add Educator</h2>
-                <div style={{color:"green"}} className="w-16 h-1 bg-green-500"></div>
+                <div style={{ color: "green" }} className="w-16 h-1 bg-green-500"></div>
               </div>
 
               <div className="flex justify-center items-center h-screen">
@@ -158,7 +160,7 @@ function EducatorEntry({ schoolId }) {
                     <button
                       className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                       type="submit"
-                      style={{backgroundColor:"green"}}
+                      style={{ backgroundColor: "green" }}
                     >
                       Submit
                     </button>

@@ -3,13 +3,14 @@ import Dashboard from "./Dashboard";
 import aboutImg from '../images/hero-bcg-6.jpg'
 import styled from 'styled-components';
 import { NavLink } from "react-router-dom";
-import {  FaChalkboardTeacher } from "react-icons/fa";
-import { MdOutlineSchool} from "react-icons/md";
+import { FaChalkboardTeacher } from "react-icons/fa";
+import { MdOutlineSchool } from "react-icons/md";
 import { BsBook, BsTable } from "react-icons/bs";
 import { sample } from 'lodash';
 import { useState } from "react";
 // import CourseList from "./CourseList";
 import ProductList from "./ProductList";
+import AdminSideBar from "./AdminSideBar";
 
 function AllCourse() {
     const [selectedOption, setSelectedOption] = useState('');
@@ -62,7 +63,7 @@ function AllCourse() {
         setSelectedOption(randomOption);
     };
 
-  const email = localStorage.getItem("email");
+    const email = localStorage.getItem("email");
 
 
     return (
@@ -76,16 +77,16 @@ function AllCourse() {
                         V<span className="text-5xl text-black ">S </span>
                     </h1>
                 </NavLink>
-                <Dashboard dashboardItems={dashboardItems} />
+                {/* <Dashboard dashboardItems={dashboardItems} /> */}
                 <div className="bg-orange-400 absolute top-0 w-10/12 h-20" style={{ left: 250 }}>
                     {/* <div className="container mx-auto flex items-center justify-between px-4 py-3"> */}
-                    <div  className="bg-black text-white text-4xl xl:font-bold font-weight: 600 flex px-20 py-5">
+                    <div className="bg-black text-white text-4xl xl:font-bold font-weight: 600 flex px-20 py-5">
                         Administrator
                         <div>
-                <h1 className="text-6xl" style={{marginTop:"15px", marginLeft:"300px"}}> {email ? <h1 className="text-xs pb-3">Welcome {email}</h1> : null}</h1>
-              </div>
+                            <h1 className="text-6xl" style={{ marginTop: "15px", marginLeft: "300px" }}> {email ? <h1 className="text-xs pb-3">Welcome {email}</h1> : null}</h1>
+                        </div>
                     </div>
-
+                    <AdminSideBar />
                     {/* <Wrapper className='page relative section section-center px-30 py-25'>
 
                     </Wrapper> */}

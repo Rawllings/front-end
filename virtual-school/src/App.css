@@ -1,8 +1,22 @@
-body {
+/* body {
     font-family: 'Open Sans', sans-serif;
   }
   .triangle {
     width: 200px;
     height: 200px;
     clip-path: polygon(50% 0, 0 100%, 100% 100%);
-  }  
+  }   */
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      max-width: 100%;
+      padding: 10px;
+    }
+  }
+  

@@ -6,6 +6,7 @@ import { FaSchool, FaChalkboardTeacher } from "react-icons/fa";
 import { MdOutlineSchool } from "react-icons/md";
 import { BsBook, BsTable } from "react-icons/bs";
 import Swal from "sweetalert2";
+import AdminSideBar from "./AdminSideBar";
 
 function SchoolEntry({ ownerId }) {
   const [name, setName] = useState();
@@ -80,7 +81,8 @@ function SchoolEntry({ ownerId }) {
   return (
     <>
       <div>
-        <Dashboard dashboardItems={dashboardItems} />
+        {/* <Dashboard dashboardItems={dashboardItems} /> */}
+        <AdminSideBar />
         <div
           className="bg-orange-400 absolute top-0 w- h-20"
           style={{ left: 200 }}
