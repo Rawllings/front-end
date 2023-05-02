@@ -51,7 +51,7 @@ function StudentSideBar() {
                   className="text-5xl text-white font-bold pb-5 pl-0"
                   style={{ paddingLeft: "0px" }}
                 >
-                  V<span className="text-5xl text-white ">S </span>
+                  V<span className="text-5xl text-black ">S </span>
                 </h1>
               </NavLink>
               <ul className="space-y-2 font-medium">

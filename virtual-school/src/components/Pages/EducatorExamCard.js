@@ -9,7 +9,7 @@ function EducatorExamCard({exam ,courseId}) {
     <img className="w-full h-48 object-cover" src={orangeImage} alt="Course Image" />
     <div className="px-6 py-4">
       <div className="font-bold text-xl mb-2">{exam.exam_name}</div>
-      <button className="bg-orange-500 hover:bg-blue-700 text-white text-lg py-2 px-4 rounded-lg transition-colors duration-300" onClick={()=> navigate(`/educator/exams/${courseId}/exam/${exam.id}`)}>
+      <button className="bg-green-600 hover:bg-black hover:text-white text-white text-lg py-2 px-4 rounded-lg transition-colors duration-300" onClick={()=> navigate(`/educator/exams/${courseId}/exam/${exam.id}`)}>
         View Student Answers
       </button>
     </div>

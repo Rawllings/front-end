@@ -14,7 +14,7 @@ function CoursesExam({ name, courseId }) {
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{name}</div>
         <button
-          className="bg-orange-500 hover:bg-blue-700 text-white text-lg py-2 px-4 rounded-lg transition-colors duration-300"
+          className="bg-green-600 hover:bg-black text-white text-lg py-2 px-4 rounded-lg transition-colors duration-300"
           onClick={() => navigate(`/educator/exams/${courseId}`)}
         >
           View Exams

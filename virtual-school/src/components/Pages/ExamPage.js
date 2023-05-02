@@ -40,7 +40,7 @@ const ExamPage = () => {
               className="text-2xl pb-10 font-bold "
               style={{ marginLeft: "350px", paddingBottom: "20px" }}
             >
-              Question:
+              Question: What is Pharmacy?
             </span>{" "}
             {}
           </label>
