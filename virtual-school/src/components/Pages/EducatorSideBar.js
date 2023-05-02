@@ -2,6 +2,7 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { FaSignOutAlt, FaBookOpen } from "react-icons/fa";
+import { MdPlagiarism  } from "react-icons/md";
 import { BsGraphUp } from "react-icons/bs";
 import { SiTestcafe } from "react-icons/si";
 import { AuthContext } from "../Pages/AuthContext";
@@ -66,7 +67,7 @@ function EducatorSideBar() {
 
               <li>
                 <NavLink
-                  to="/educator/schedule-exam"
+                  to="/educator/exam"
                   className="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-black dark:hover:bg-gray-700"
                 >
                   <div className="text-xl">
@@ -96,7 +97,7 @@ function EducatorSideBar() {
                   to="/educator/plagiarism"
                 >
                   <div className="text-xl">
-                    <BsGraphUp />
+                  <MdPlagiarism/>
                   </div>
                   <span className="flex-1 ml-3 text-2xl text-start">
                     Plagiarism

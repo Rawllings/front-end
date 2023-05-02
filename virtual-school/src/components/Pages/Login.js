@@ -46,7 +46,7 @@ function Login( { schools, selectedSchoolId, setSelectedSchoolId} ) {
             className="text-5xl text-blue-800 font-bold pb-5 pl-20"
             style={{ paddingLeft: "140px" }}
           >
-            V<span className="text-5xl text-orange-500 ">S </span>
+            V<span className="text-5xl text-green-600 ">S </span>
           </h1>
         </a>
 
